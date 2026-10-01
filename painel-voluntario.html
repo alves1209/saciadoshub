@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Voluntário - SaciadosHub</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        🍽️ <strong>SaciadosHub</strong>
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">Início</a>
+
+        <a href="mapa.html">Mapa Inteligente</a>
+
+        <a href="#" id="sair">Sair</a>
+
+    </nav>
+
+
+</header>
+
+
+
+
+
+<section class="painel">
+
+
+<div class="painel-box">
+
+
+
+<h1>
+Bem-vindo Voluntário! 🚚
+</h1>
+
+
+
+<p>
+Ajude a conectar doações com quem precisa.
+</p>
+
+
+
+
+
+
+
+
+
+<!-- DASHBOARD COM CONTADORES -->
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+
+<h2 id="totalEntregas">
+0
+</h2>
+
+
+<p>
+📦 Total de Entregas
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+
+<h2 id="emTransporte">
+0
+</h2>
+
+
+<p>
+🚚 Em Transporte
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+
+<h2 id="entregues">
+0
+</h2>
+
+
+<p>
+✅ Entregas Concluídas
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- GRÁFICO -->
+
+
+<section class="lista">
+
+
+<h2>
+📊 Impacto das Entregas
+</h2>
+
+
+<canvas id="graficoEntregas"></canvas>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ENTREGAS DISPONÍVEIS -->
+
+
+<section class="lista">
+
+
+<h2>
+📦 Entregas Disponíveis
+</h2>
+
+
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Alimento
+</th>
+
+
+<th>
+Quantidade
+</th>
+
+
+<th>
+Restaurante
+</th>
+
+
+<th>
+ONG
+</th>
+
+
+<th>
+Local
+</th>
+
+
+<th>
+Status
+</th>
+
+
+<th>
+Ação
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="listaEntregas">
+
+
+</tbody>
+
+
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- HISTÓRICO -->
+
+
+<section class="lista">
+
+
+<h2>
+🏆 Histórico de Entregas
+</h2>
+
+
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Alimento
+</th>
+
+
+<th>
+ONG
+</th>
+
+
+<th>
+Data
+</th>
+
+
+<th>
+Status
+</th>
+
+
+<th>
+Ação
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="historicoEntregas">
+
+
+</tbody>
+
+
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="notificacoes-tema.js"></script>
+<script src="voluntario.js"></script>
+<script src="saci-ai.js"></script>
+
+</body>
+
+</html>

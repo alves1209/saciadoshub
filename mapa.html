@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaciadosHub - Mapa Inteligente em Tempo Real</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Estilo do Mapa -->
+    <link rel="stylesheet" href="mapa.css">
+    <link rel="stylesheet" href="saci-ai.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         CABEÇALHO / NAVBAR PRINCIPAL
+    ========================================== -->
+    <header class="header-mapa">
+        <div class="logo-area">
+            <a href="index.html" class="logo-link">
+                <span class="logo-icone">🍽️</span>
+                <span class="logo-texto"><strong>SaciadosHub</strong></span>
+            </a>
+            <span class="badge-status-rede">
+                <span class="ponto-pulsante"></span> Rede Ativa
+            </span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="index.html#funciona">Como Funciona</a>
+            <a href="mapa.html" class="nav-ativo">Mapa Inteligente</a>
+            <a href="sobre.html">Sobre Nós</a>
+            <a href="parceiros.html">Parceiros</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+
+        <div class="header-acoes">
+            <div id="usuarioConectadoInfo" class="usuario-badge" style="display:none;">
+                <span id="nomeUsuarioConectado">Usuário</span>
+                <button id="btnDesconectar" title="Encerrar Sessão">Sair</button>
+            </div>
+            <a href="login.html" id="linkLoginHeader" class="btn-header-login">Entrar</a>
+            <a href="cadastro.html" id="linkCadastroHeader" class="btn-header-cadastro">Cadastrar</a>
+        </div>
+    </header>
+
+    <!-- =========================================
+         DASHBOARD DE IMPACTO DO MAPA (TEMPO REAL)
+    ========================================== -->
+    <section class="dashboard-mapa-kpis">
+        <div class="kpis-container">
+            <div class="kpi-card">
+                <div class="kpi-icone icone-doacoes">📦</div>
+                <div class="kpi-dados">
+                    <h3 id="kpiDoacoesAtivas">0</h3>
+                    <p>Doações Ativas</p>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icone icone-ongs">❤️</div>
+                <div class="kpi-dados">
+                    <h3 id="kpiOngsCadastradas">0</h3>
+                    <p>ONGs Conectadas</p>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icone icone-doadores">🍽️</div>
+                <div class="kpi-dados">
+                    <h3 id="kpiDoadoresCadastrados">0</h3>
+                    <p>Empresas Doadoras</p>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icone icone-voluntarios">🙋</div>
+                <div class="kpi-dados">
+                    <h3 id="kpiVoluntariosAtivos">0</h3>
+                    <p>Voluntários Ativos</p>
+                </div>
+            </div>
+
+            <div class="kpi-card kpi-destaque">
+                <div class="kpi-icone icone-kg">🌱</div>
+                <div class="kpi-dados">
+                    <h3 id="kpiAlimentosSalvos">0 kg</h3>
+                    <p>Alimentos Salvos</p>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icone icone-impacto">👥</div>
+                <div class="kpi-dados">
+                    <h3 id="kpiPessoasBeneficiadas">0</h3>
+                    <p>Refeições Estimadas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         SEÇÃO PRINCIPAL: MAPA + FILTROS + DETALHES
+    ========================================== -->
+    <main class="mapa-layout-principal">
+
+        <!-- PAINEL LATERAL DE FILTROS INTELIGENTES -->
+        <aside class="painel-filtros">
+            <div class="filtros-cabecalho">
+                <h2>🔍 Filtros Inteligentes</h2>
+                <button id="btnLimparFiltros" class="btn-link-limpar">Limpar</button>
+            </div>
+
+            <!-- Busca por Nome / Bairro / Endereço -->
+            <div class="filtro-grupo">
+                <label for="campoBusca">Buscar por local ou doação</label>
+                <div class="input-com-icone">
+                    <input type="text" id="campoBusca" placeholder="Ex: Arroz, ONG Esperança, Centro...">
+                    <span class="icone-input">🔎</span>
+                </div>
+            </div>
+
+            <!-- Categorias Principais (Marcadores) -->
+            <div class="filtro-grupo">
+                <label>Categorias no Mapa</label>
+                <div class="botoes-categorias-grid">
+                    <button class="btn-categoria ativo" data-filtro="todos">
+                        <span class="cat-icone">📍</span>
+                        <span class="cat-label">Todos</span>
+                        <span class="cat-contador" id="contTodos">0</span>
+                    </button>
+
+                    <button class="btn-categoria" data-filtro="doacao_disponivel">
+                        <span class="cat-icone">📦</span>
+                        <span class="cat-label">Disponíveis</span>
+                        <span class="cat-contador" id="contDoacoes">0</span>
+                    </button>
+
+                    <button class="btn-categoria" data-filtro="restaurante">
+                        <span class="cat-icone">🍽️</span>
+                        <span class="cat-label">Doadores</span>
+                        <span class="cat-contador" id="contDoadores">0</span>
+                    </button>
+
+                    <button class="btn-categoria" data-filtro="ong">
+                        <span class="cat-icone">❤️</span>
+                        <span class="cat-label">ONGs</span>
+                        <span class="cat-contador" id="contOngs">0</span>
+                    </button>
+
+                    <button class="btn-categoria" data-filtro="voluntario">
+                        <span class="cat-icone">🙋</span>
+                        <span class="cat-label">Voluntários</span>
+                        <span class="cat-contador" id="contVoluntarios">0</span>
+                    </button>
+
+                    <button class="btn-categoria" data-filtro="transporte">
+                        <span class="cat-icone">🚚</span>
+                        <span class="cat-label">Em Transporte</span>
+                        <span class="cat-contador" id="contTransporte">0</span>
+                    </button>
+
+                    <button class="btn-categoria" data-filtro="concluida">
+                        <span class="cat-icone">✅</span>
+                        <span class="cat-label">Concluídas</span>
+                        <span class="cat-contador" id="contConcluidas">0</span>
+                    </button>
+
+                    <button class="btn-categoria" data-filtro="necessidade_ong">
+                        <span class="cat-icone">📢</span>
+                        <span class="cat-label">Necessidades</span>
+                        <span class="cat-contador" id="contNecessidades">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtro de Raio / Distância -->
+            <div class="filtro-grupo">
+                <div class="label-com-valor">
+                    <label for="sliderDistancia">Distância Máxima:</label>
+                    <span id="valorDistancia">50 km</span>
+                </div>
+                <input type="range" id="sliderDistancia" min="1" max="50" value="50" class="range-slider">
+                <div class="range-limites">
+                    <span>1 km</span>
+                    <span>25 km</span>
+                    <span>50 km</span>
+                </div>
+            </div>
+
+            <!-- Filtro de Categoria de Alimento -->
+            <div class="filtro-grupo">
+                <label for="filtroCategoriaAlimento">Tipo de Alimento</label>
+                <select id="filtroCategoriaAlimento" class="select-filtro">
+                    <option value="todos">Todos os tipos de alimento</option>
+                    <option value="refeicoes">🍱 Refeições Prontas / Pratos</option>
+                    <option value="hortifruti">🍎 Hortifrúti / Frutas e Legumes</option>
+                    <option value="padaria">🥖 Padaria e Confeitaria</option>
+                    <option value="graos">🍚 Grãos, Massas e Cereais</option>
+                    <option value="laticinios">🥛 Laticínios e Bebidas</option>
+                    <option value="outros">📦 Outros Alimentos</option>
+                </select>
+            </div>
+
+            <!-- Botões de Ação Rápida -->
+            <div class="filtros-acoes">
+                <button id="btnGeolocalizacao" class="btn-acao-geo">
+                    <span>🎯</span> Minha Localização
+                </button>
+                <button id="btnModoEmergencia" class="btn-acao-emergencia" title="Destacar pedidos e abrigos prioritários">
+                    <span>🚨</span> Modo Emergência
+                </button>
+            </div>
+
+            <!-- Legenda Explicativa -->
+            <div class="legenda-mapa">
+                <h4>Legenda de Marcadores</h4>
+                <ul>
+                    <li><span class="legenda-cor doador"></span> 🍽️ Restaurantes / Doadores</li>
+                    <li><span class="legenda-cor ong"></span> ❤️ ONGs e Abrigos</li>
+                    <li><span class="legenda-cor voluntario"></span> 🙋 Voluntários Disponíveis</li>
+                    <li><span class="legenda-cor doacao"></span> 📦 Doações para Retirada</li>
+                    <li><span class="legenda-cor transporte"></span> 🚚 Em Trânsito</li>
+                    <li><span class="legenda-cor concluida"></span> ✅ Entregue / Concluída</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- CONTAINER DO MAPA LEAFLET -->
+        <section class="area-mapa-container">
+            <div id="mapa"></div>
+
+            <!-- BARRA DE CONTROLE FLUTUANTE NO MAPA -->
+            <div class="controle-flutuante">
+                <button id="btnRecentrar" title="Centralizar visualização" class="btn-flutuante">
+                    📍 Centralizar
+                </button>
+                <button id="btnAlternarCamadas" title="Alternar visão satélite/rua" class="btn-flutuante">
+                    🗺️ Satélite / Rua
+                </button>
+                <button id="btnLimparRotas" title="Ocultar linha de rota" class="btn-flutuante" style="display:none;">
+                    ✖️ Ocultar Rota
+                </button>
+            </div>
+
+            <!-- PAINEL LATERAL DESLIZANTE DE DETALHES DO MARCADOR -->
+            <div id="painelDetalhesMarcador" class="painel-detalhes-marcador">
+                <button id="btnFecharDetalhes" class="btn-fechar-detalhes" title="Fechar">&times;</button>
+                
+                <div class="detalhes-cabecalho">
+                    <div class="avatar-detalhes" id="detalheAvatar">🍽️</div>
+                    <div class="detalhes-titulos">
+                        <span class="badge-tipo-detalhe" id="detalheTipo">Restaurante</span>
+                        <h3 id="detalheNome">Nome do Estabelecimento</h3>
+                        <p class="detalhes-distancia" id="detalheDistancia">📍 Aprox. 2,4 km de você</p>
+                    </div>
+                </div>
+
+                <div class="detalhes-corpo">
+                    <!-- Bloco de Endereço e Horário -->
+                    <div class="detalhe-bloco">
+                        <h4>📍 Localização & Horário</h4>
+                        <p id="detalheEndereco">Rua das Flores, 123 - Centro</p>
+                        <p id="detalheHorario" class="texto-secundario">⏰ Retiradas: 14h às 18h</p>
+                    </div>
+
+                    <!-- Bloco Específico da Doação (se aplicável) -->
+                    <div class="detalhe-bloco" id="blocoDoacaoInfo" style="display:none;">
+                        <h4>🍱 Informações do Alimento</h4>
+                        <div class="info-doacao-grid">
+                            <div>
+                                <span class="label-info">Alimento:</span>
+                                <strong id="detalheAlimento">-</strong>
+                            </div>
+                            <div>
+                                <span class="label-info">Quantidade:</span>
+                                <strong id="detalheQuantidade">-</strong>
+                            </div>
+                            <div>
+                                <span class="label-info">Validade:</span>
+                                <strong id="detalheValidade" class="texto-validade">-</strong>
+                            </div>
+                            <div>
+                                <span class="label-info">Status:</span>
+                                <span id="detalheStatusBadge" class="status-badge-mini">Disponível</span>
+                            </div>
+                        </div>
+                        <p id="detalheDescricao" class="descricao-doacao">Descrição do alimento...</p>
+                    </div>
+
+                    <!-- Bloco do Voluntário (se aplicável) -->
+                    <div class="detalhe-bloco" id="blocoVoluntarioInfo" style="display:none;">
+                        <h4>🙋 Perfil do Voluntário</h4>
+                        <div class="info-voluntario-grid">
+                            <div>
+                                <span class="label-info">Veículo:</span>
+                                <strong id="detalheVeiculo">Bicicleta</strong>
+                            </div>
+                            <div>
+                                <span class="label-info">Capacidade:</span>
+                                <strong id="detalheCapacidade">Até 25 kg</strong>
+                            </div>
+                            <div>
+                                <span class="label-info">Status:</span>
+                                <strong id="detalheStatusVoluntario" class="texto-verde">Disponível</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ações Disponíveis -->
+                    <div class="detalhes-acoes" id="acoesContainer">
+                        <button id="btnTracarRota" class="btn-primario-mapa">
+                            🚗 Traçar Rota & Ver Trajeto
+                        </button>
+                        
+                        <button id="btnReservarDoacao" class="btn-sucesso-mapa" style="display:none;">
+                            ❤️ Reservar Doação (ONG)
+                        </button>
+
+                        <button id="btnAtenderNecessidade" class="btn-sucesso-mapa" style="display:none; background: #f97316;">
+                            🤝 Atender Solicitação da ONG
+                        </button>
+
+                        <button id="btnAceitarMissao" class="btn-aviso-mapa" style="display:none;">
+                            🚚 Aceitar Missão de Coleta
+                        </button>
+
+                        <button id="btnPixSolidario" class="btn-pix-mapa">
+                            💚 Apoiar com PIX Solidário
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================================
+         MODAL PIX SOLIDÁRIO
+    ========================================== -->
+    <div id="modalPix" class="modal-overlay" style="display:none;">
+        <div class="modal-conteudo">
+            <button id="btnFecharModalPix" class="modal-fechar">&times;</button>
+            <div class="modal-topo">
+                <span class="modal-icone">💚</span>
+                <h3>PIX Solidário SaciadosHub</h3>
+                <p>Apoie os custos de transporte do voluntário e embalagens seguras para a ONG.</p>
+            </div>
+
+            <div class="pix-card-area">
+                <div class="pix-qrcode-fake">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126580014br.gov.bcb.pix0136saciadoshub-solidario@tcc.org5204000053039865802BR5920SaciadosHub%20Solidario6009Sao%20Paulo62070503***6304E8F2" alt="QR Code PIX Solidário">
+                </div>
+                <div class="pix-copia-cola">
+                    <label for="codigoPix">Chave PIX (Copia e Cola):</label>
+                    <div class="campo-copia">
+                        <input type="text" id="codigoPix" value="saciadoshub-solidario@tcc.org" readonly>
+                        <button id="btnCopiarPix" class="btn-copiar">Copiar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-rodape">
+                <p class="nota-pix">🔒 100% dos recursos são revertidos para apoio logístico e alimentação solidária.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================
+         RODAPÉ INFORMATIVO
+    ========================================== -->
+    <footer class="footer-mapa">
+        <p>© 2026 <strong>SaciadosHub</strong> • Ecossistema Inteligente de Resgate e Distribuição de Alimentos.</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Script do Mapa Inteligente -->
+    <script src="mapa.js"></script>
+    <script src="saci-ai.js"></script>
+
+</body>
+</html>

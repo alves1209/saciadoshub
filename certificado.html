@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaciadosHub - Certificado Digital de Impacto & Comprovante de Entrega</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+
+    <style>
+        /* ESTILOS DO CERTIFICADO DIGITAL */
+        .area-certificado {
+            max-width: 900px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+        }
+
+        .certificado-moldura {
+            background: #ffffff;
+            border: 12px solid #7c3aed;
+            border-image: linear-gradient(135deg, #7c3aed, #f97316) 1;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+            position: relative;
+            background-color: #fffdfa;
+        }
+
+        .certificado-topo h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            color: #4c1d95;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .certificado-subtitulo {
+            color: #f97316;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 13px;
+        }
+
+        .certificado-corpo {
+            margin: 35px 0;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .nome-destaque-cert {
+            font-size: 26px;
+            font-weight: 800;
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            display: inline-block;
+            padding: 0 25px 5px;
+            margin: 15px 0;
+        }
+
+        .metricas-cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .metrica-cert-item h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #7c3aed;
+            margin-bottom: 2px;
+        }
+
+        .metrica-cert-item p {
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .certificado-rodape {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .assinatura-cert {
+            text-align: center;
+        }
+
+        .linha-assinatura {
+            width: 200px;
+            height: 1.5px;
+            background: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .selo-autenticidade {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+
+        /* OCULTAR ELEMENTOS NÃO IMPRESSOS NO PDF */
+        @media print {
+            header, .botoes-acoes-cert, footer, #btnAlternarTema, #centralNotificacoesContainer {
+                display: none !important;
+            }
+            .area-certificado {
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .certificado-moldura {
+                box-shadow: none !important;
+                border-width: 6px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            🍽️ <strong>SaciadosHub</strong>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="mapa.html">Mapa Inteligente</a>
+            <a href="ranking.html">Ranking</a>
+            <a href="transparencia.html">Transparência</a>
+            <a href="perfil.html">Meu Perfil</a>
+        </nav>
+
+        <div class="header-botoes">
+            <button onclick="window.history.back()" class="btn-login">
+                ← Voltar
+            </button>
+            <button onclick="window.print()" class="btn-cadastro" style="background: #10b981;">
+                🖨️ Baixar PDF / Imprimir
+            </button>
+        </div>
+    </header>
+
+    <!-- ÁREA DO CERTIFICADO -->
+    <main class="area-certificado">
+
+        <div class="botoes-acoes-cert" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div>
+                <h2 style="font-size: 22px; margin: 0;">📜 Certificado de Impacto Social & ESG</h2>
+                <p style="color: #64748b; font-size: 13px;">Documento oficial de reconhecimento por combate ao desperdício de alimentos.</p>
+            </div>
+            <button onclick="window.print()" class="btn-cadastro" style="background: linear-gradient(135deg, #7c3aed, #f97316);">
+                📄 Exportar Certificado
+            </button>
+        </div>
+
+        <div class="certificado-moldura">
+            <div class="certificado-topo">
+                <div style="font-size: 40px; margin-bottom: 6px;">🌱</div>
+                <p class="certificado-subtitulo">Plataforma SaciadosHub • Reconhecimento ESG & Cidadania</p>
+                <h1>Certificado de Impacto</h1>
+            </div>
+
+            <div class="certificado-corpo">
+                <p>Certificamos com honra que a organização</p>
+                
+                <div class="nome-destaque-cert" id="certNomeOrganizacao">
+                    Restaurante Sabor & Vida
+                </div>
+
+                <p>
+                    contribuiu ativamente para a erradicação da fome e a redução do desperdício de alimentos,
+                    promovendo sustentabilidade, dignidade e solidariedade social em sua comunidade através do ecossistema inteligente <strong>SaciadosHub</strong>.
+                </p>
+
+                <div class="metricas-cert-grid">
+                    <div class="metrica-cert-item">
+                        <h3 id="certDoacoes">14</h3>
+                        <p>Resgates Concluídos</p>
+                    </div>
+                    <div class="metrica-cert-item">
+                        <h3 id="certKg">280 kg</h3>
+                        <p>Alimentos Salvos</p>
+                    </div>
+                    <div class="metrica-cert-item">
+                        <h3 id="certRefeicoes">700</h3>
+                        <p>Refeições Geradas</p>
+                    </div>
+                    <div class="metrica-cert-item">
+                        <h3 id="certCo2">700 kg</h3>
+                        <p>CO₂ Evitado Estimado</p>
+                    </div>
+                </div>
+
+                <p style="font-size: 13px; color: #64748b;">
+                    Período auditado: <strong>Ano de 2026</strong> • Conforme as diretrizes das ODS 2 (Fome Zero) e ODS 12 (Consumo e Produção Responsáveis) da ONU.
+                </p>
+            </div>
+
+            <div class="certificado-rodape">
+                <div class="selo-autenticidade">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=70x70&data=https://saciadoshub.org/validar-cert-2026" alt="QR Code Autenticidade" style="border-radius: 6px; border: 1px solid #cbd5e1;">
+                    <div>
+                        <strong style="font-size: 12px; color: #1e293b;">Código de Autenticidade</strong>
+                        <p id="certCodigoHash" style="font-family: monospace; font-size: 11px; color: #64748b; margin: 0;">SH-2026-IMPACT-8849</p>
+                        <span style="font-size: 10px; color: #10b981; font-weight: 700;">✓ Documento Auditável</span>
+                    </div>
+                </div>
+
+                <div class="assinatura-cert">
+                    <div class="linha-assinatura"></div>
+                    <strong style="font-size: 12px; color: #1e293b;">Comitê Gestor SaciadosHub</strong>
+                    <p style="font-size: 11px; color: #64748b; margin: 0;">Coordenação de Impacto Social</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 <strong>SaciadosHub</strong> • Certificação Digital e Rastreabilidade.</p>
+    </footer>
+
+    <script src="notificacoes-tema.js"></script>
+    <script src="saci-ai.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const usuarioSalvo = JSON.parse(localStorage.getItem("usuarioAtual"));
+            if (usuarioSalvo && usuarioSalvo.nome) {
+                document.getElementById("certNomeOrganizacao").textContent = usuarioSalvo.nome;
+            }
+
+            // Calcular dados reais do localStorage
+            let doacoes = [];
+            try {
+                doacoes = JSON.parse(localStorage.getItem("doacoes")) || [];
+            } catch (e) {
+                doacoes = [];
+            }
+
+            let totalKg = 0;
+            doacoes.forEach(d => totalKg += Number(d.quantidade) || 0);
+
+            if (totalKg === 0) totalKg = 280;
+            const totalRefeicoes = Math.round(totalKg * 2.5);
+            const totalCo2 = (totalKg * 2.5).toFixed(0);
+
+            document.getElementById("certDoacoes").textContent = doacoes.length > 0 ? doacoes.length : 14;
+            document.getElementById("certKg").textContent = `${totalKg} kg`;
+            document.getElementById("certRefeicoes").textContent = `${totalRefeicoes}`;
+            document.getElementById("certCo2").textContent = `${totalCo2} kg`;
+            document.getElementById("certCodigoHash").textContent = `SH-2026-AUT-${Math.floor(1000 + Math.random() * 9000)}`;
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,829 @@
+/* ==========================================================================
+   SACIADOSHUB - SACIAI: ASSISTENTE INTELIGENTE
+   Folha de Estilos Modular para Assistente Virtual, Chat, Acessibilidade & Insights
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BOTÃO FLUTUANTE DA SACIAI (FAB) & TOOLTIP
+   -------------------------------------------------------------------------- */
+.saci-ai-fab-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+}
+
+.saci-ai-tooltip {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 9999px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: saciTooltipFade 0.4s ease-out, saciFloat 3s ease-in-out infinite alternate;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    white-space: nowrap;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.saci-ai-tooltip:hover {
+    transform: scale(1.04);
+}
+
+.saci-ai-tooltip .fechar-tooltip {
+    color: #94a3b8;
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 2px;
+    line-height: 1;
+}
+
+.saci-ai-fab-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981 0%, #059669 40%, #7c3aed 100%);
+    border: none;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4), 0 0 0 0 rgba(124, 58, 237, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: saciPulse 2.5s infinite;
+}
+
+.saci-ai-fab-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5), 0 0 20px rgba(124, 58, 237, 0.6);
+}
+
+.saci-ai-fab-icone {
+    font-size: 32px;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+.saci-ai-fab-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    animation: saciBadgeBounce 1s infinite alternate;
+}
+
+/* --------------------------------------------------------------------------
+   2. JANELA DE CHAT PRINCIPAL (MODAL / PAINEL CONVERSACIONAL)
+   -------------------------------------------------------------------------- */
+.saci-ai-chat-janela {
+    position: fixed;
+    bottom: 95px;
+    right: 25px;
+    width: 420px;
+    max-width: calc(100vw - 30px);
+    height: 620px;
+    max-height: calc(100vh - 120px);
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(226, 232, 240, 0.8);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+}
+
+.saci-ai-chat-janela.aberto {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* CABEÇALHO DO CHAT */
+.saci-chat-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #064e3b 100%);
+    color: #ffffff;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.saci-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.saci-avatar-topo {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10b981, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.saci-header-titulos h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.saci-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #34d399;
+}
+
+.saci-ponto-verde {
+    width: 7px;
+    height: 7px;
+    background: #34d399;
+    border-radius: 50%;
+    animation: saciPontoPulse 1.5s infinite;
+}
+
+.saci-header-acoes {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.saci-btn-header {
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.saci-btn-header:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
+.saci-btn-header.ativo-som {
+    background: #10b981;
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   3. BARRA DE ATALHOS / CHIPS DE SUGESTÕES
+   -------------------------------------------------------------------------- */
+.saci-chips-bar {
+    background: #f8fafc;
+    padding: 10px 14px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid #e2e8f0;
+    scrollbar-width: thin;
+}
+
+.saci-chips-bar::-webkit-scrollbar {
+    height: 4px;
+}
+
+.saci-chips-bar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.saci-chip {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.saci-chip:hover {
+    background: #ede9fe;
+    color: #7c3aed;
+    border-color: #7c3aed;
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   4. CORPO DE MENSAGENS DO CHAT
+   -------------------------------------------------------------------------- */
+.saci-chat-corpo {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #f8fafc;
+    scroll-behavior: smooth;
+}
+
+.saci-msg-linha {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    animation: saciMsgIn 0.3s ease-out;
+}
+
+.saci-msg-linha.usuario {
+    flex-direction: row-reverse;
+}
+
+.saci-msg-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981, #7c3aed);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.saci-msg-linha.usuario .saci-msg-avatar {
+    background: #0f172a;
+}
+
+.saci-msg-bolha-wrapper {
+    max-width: 82%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.saci-msg-linha.usuario .saci-msg-bolha-wrapper {
+    align-items: flex-end;
+}
+
+.saci-msg-bolha {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    word-break: break-word;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.saci-msg-linha.bot .saci-msg-bolha {
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-top-left-radius: 4px;
+}
+
+.saci-msg-linha.usuario .saci-msg-bolha {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    color: #ffffff;
+    border-top-right-radius: 4px;
+}
+
+.saci-msg-hora {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 2px;
+    padding: 0 4px;
+}
+
+.saci-msg-acoes {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.saci-btn-ouvir-msg {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+}
+
+.saci-btn-ouvir-msg:hover {
+    background: #ede9fe;
+    color: #7c3aed;
+    border-color: #7c3aed;
+}
+
+/* --------------------------------------------------------------------------
+   5. CARDS INTERATIVOS DENTRO DO CHAT (NLP, MATCHING, DOAÇÕES)
+   -------------------------------------------------------------------------- */
+.saci-card-interativo {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.saci-card-titulo {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.saci-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.saci-card-item {
+    background: #f8fafc;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #edf2f7;
+    font-size: 11.5px;
+}
+
+.saci-card-item strong {
+    display: block;
+    color: #64748b;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.saci-card-item span {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.saci-card-item.destaque-verde span {
+    color: #10b981;
+}
+
+.saci-card-item.destaque-roxo span {
+    color: #7c3aed;
+}
+
+.saci-card-item.destaque-laranja span {
+    color: #f97316;
+}
+
+.saci-btn-acao-card {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    transition: all 0.2s;
+}
+
+.saci-btn-primario {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #ffffff;
+}
+
+.saci-btn-primario:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-1px);
+}
+
+.saci-btn-roxo {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: #ffffff;
+}
+
+.saci-btn-roxo:hover {
+    background: linear-gradient(135deg, #6d28d9, #5b21b6);
+}
+
+.saci-alerta-box {
+    background: #fff7ed;
+    border-left: 4px solid #f97316;
+    padding: 10px 12px;
+    border-radius: 0 8px 8px 0;
+    margin: 8px 0;
+    font-size: 12px;
+    color: #9a3412;
+}
+
+.saci-alerta-box.critico {
+    background: #fef2f2;
+    border-left-color: #ef4444;
+    color: #991b1b;
+}
+
+/* --------------------------------------------------------------------------
+   6. BARRA DE ENTRADA / INPUT DO USUÁRIO & VOZ
+   -------------------------------------------------------------------------- */
+.saci-chat-input-area {
+    padding: 12px 14px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+}
+
+.saci-voz-gravando-banner {
+    background: linear-gradient(90deg, #ef4444, #f97316);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    animation: saciPulse 1.5s infinite;
+}
+
+.saci-voz-ondas {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+.saci-voz-onda {
+    width: 3px;
+    height: 12px;
+    background: #ffffff;
+    border-radius: 3px;
+    animation: saciOnda 0.8s infinite ease-in-out alternate;
+}
+
+.saci-voz-onda:nth-child(2) { animation-delay: 0.2s; height: 18px; }
+.saci-voz-onda:nth-child(3) { animation-delay: 0.4s; height: 10px; }
+.saci-voz-onda:nth-child(4) { animation-delay: 0.6s; height: 16px; }
+
+.saci-form-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.saci-input-texto {
+    flex: 1;
+    padding: 11px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #ffffff;
+    color: #1e293b;
+}
+
+.saci-input-texto:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+.saci-btn-voz {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1.5px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.saci-btn-voz:hover {
+    background: #ede9fe;
+    color: #7c3aed;
+    border-color: #7c3aed;
+}
+
+.saci-btn-voz.ouvindo {
+    background: #fee2e2;
+    color: #ef4444;
+    border-color: #ef4444;
+    animation: saciPulse 1.2s infinite;
+}
+
+.saci-btn-enviar {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.saci-btn-enviar:hover {
+    background: linear-gradient(135deg, #6d28d9, #5b21b6);
+    transform: scale(1.05);
+}
+
+.saci-digitando-indicador {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #ffffff;
+    border-radius: 12px;
+    width: fit-content;
+    border: 1px solid #e2e8f0;
+}
+
+.saci-digitando-dot {
+    width: 6px;
+    height: 6px;
+    background: #7c3aed;
+    border-radius: 50%;
+    animation: saciDot 1.4s infinite ease-in-out both;
+}
+
+.saci-digitando-dot:nth-child(1) { animation-delay: -0.32s; }
+.saci-digitando-dot:nth-child(2) { animation-delay: -0.16s; }
+
+/* --------------------------------------------------------------------------
+   7. CARDS DE INSIGHTS DA SACIAI NO DASHBOARD (INJETADOS)
+   -------------------------------------------------------------------------- */
+.saci-dashboard-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #064e3b 100%);
+    border-radius: 16px;
+    padding: 22px 26px;
+    color: #ffffff;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.saci-dashboard-banner::after {
+    content: "🤖";
+    position: absolute;
+    right: 20px;
+    bottom: -10px;
+    font-size: 85px;
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.saci-insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.saci-insight-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(8px);
+}
+
+.saci-insight-icone {
+    font-size: 22px;
+}
+
+/* --------------------------------------------------------------------------
+   8. TEMA ESCURO (DARK MODE OVERRIDES)
+   -------------------------------------------------------------------------- */
+[data-tema="escuro"] .saci-ai-chat-janela,
+body.tema-escuro .saci-ai-chat-janela {
+    background: #0f172a;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px #334155;
+}
+
+[data-tema="escuro"] .saci-chips-bar,
+body.tema-escuro .saci-chips-bar {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+[data-tema="escuro"] .saci-chip,
+body.tema-escuro .saci-chip {
+    background: #0f172a;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+[data-tema="escuro"] .saci-chip:hover,
+body.tema-escuro .saci-chip:hover {
+    background: #312e81;
+    color: #c7d2fe;
+    border-color: #818cf8;
+}
+
+[data-tema="escuro"] .saci-chat-corpo,
+body.tema-escuro .saci-chat-corpo {
+    background: #0b0f19;
+}
+
+[data-tema="escuro"] .saci-msg-linha.bot .saci-msg-bolha,
+body.tema-escuro .saci-msg-linha.bot .saci-msg-bolha {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: #334155;
+}
+
+[data-tema="escuro"] .saci-card-interativo,
+body.tema-escuro .saci-card-interativo {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+[data-tema="escuro"] .saci-card-titulo,
+body.tema-escuro .saci-card-titulo {
+    color: #f8fafc;
+}
+
+[data-tema="escuro"] .saci-card-item,
+body.tema-escuro .saci-card-item {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+[data-tema="escuro"] .saci-card-item span,
+body.tema-escuro .saci-card-item span {
+    color: #f1f5f9;
+}
+
+[data-tema="escuro"] .saci-chat-input-area,
+body.tema-escuro .saci-chat-input-area {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+[data-tema="escuro"] .saci-input-texto,
+body.tema-escuro .saci-input-texto {
+    background: #0f172a;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+[data-tema="escuro"] .saci-btn-voz,
+body.tema-escuro .saci-btn-voz {
+    background: #0f172a;
+    border-color: #334155;
+    color: #94a3b8;
+}
+
+[data-tema="escuro"] .saci-btn-ouvir-msg,
+body.tema-escuro .saci-btn-ouvir-msg {
+    background: #0f172a;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+/* --------------------------------------------------------------------------
+   9. ANIMAÇÕES & MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@keyframes saciPulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+    70% { box-shadow: 0 0 0 16px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes saciBadgeBounce {
+    from { transform: scale(1); }
+    to { transform: scale(1.18); }
+}
+
+@keyframes saciTooltipFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes saciFloat {
+    from { transform: translateY(0); }
+    to { transform: translateY(-4px); }
+}
+
+@keyframes saciPontoPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+@keyframes saciMsgIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes saciOnda {
+    0% { height: 6px; }
+    100% { height: 18px; }
+}
+
+@keyframes saciDot {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 600px) {
+    .saci-ai-chat-janela {
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+    .saci-ai-fab-container {
+        bottom: 18px;
+        right: 18px;
+    }
+    .saci-ai-fab-btn {
+        width: 56px;
+        height: 56px;
+    }
+    .saci-ai-fab-icone {
+        font-size: 28px;
+    }
+}

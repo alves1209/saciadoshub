@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaciadosHub - Campanhas Solidárias & Metas Coletivas</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+
+    <style>
+        .campanha-card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .campanha-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .campanha-banner {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+
+        .campanha-tag-urgencia {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .barra-progresso-container {
+            background: #f1f5f9;
+            border-radius: 9999px;
+            height: 12px;
+            width: 100%;
+            overflow: hidden;
+            margin: 10px 0 6px;
+        }
+
+        .barra-progresso-preenchimento {
+            height: 100%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #7c3aed, #f97316);
+            transition: width 0.8s ease-in-out;
+        }
+
+        .metas-coletivas-banner {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            margin-bottom: 45px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            🍽️ <strong>SaciadosHub</strong>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="mapa.html">Mapa Inteligente</a>
+            <a href="campanhas.html" style="color: #7c3aed; font-weight: 800;">Campanhas</a>
+            <a href="ranking.html">Ranking</a>
+            <a href="transparencia.html">Transparência</a>
+            <a href="sobre.html">Sobre Nós</a>
+            <a href="perfil.html">Meu Perfil</a>
+        </nav>
+
+        <div class="header-botoes">
+            <a href="login.html" class="btn-login">Entrar</a>
+            <a href="cadastro.html" class="btn-cadastro">Participar</a>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main style="max-width: 1200px; margin: 100px auto 50px; padding: 0 20px;">
+        
+        <!-- BANNER DE METAS COLETIVAS DA REDE -->
+        <section class="metas-coletivas-banner">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <span class="tag" style="background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.4);">
+                        🎯 Meta Coletiva Anual 2026
+                    </span>
+                    <h2 style="font-size: 28px; margin: 10px 0 6px; color: #ffffff;">Missão: 200 Toneladas de Alimentos Salvos</h2>
+                    <p style="color: #94a3b8; font-size: 14px; margin: 0;">União de doadores, ONGs e voluntários para erradicar a fome urbana.</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 32px; font-weight: 800; color: #10b981;">76.2%</span>
+                    <p style="font-size: 12px; color: #cbd5e1; margin: 0;">152.4 Ton / 200 Ton</p>
+                </div>
+            </div>
+
+            <div class="barra-progresso-container" style="height: 16px; margin-top: 18px; background: rgba(255, 255, 255, 0.15);">
+                <div class="barra-progresso-preenchimento" style="width: 76.2%; background: linear-gradient(90deg, #10b981, #3b82f6);"></div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+                <div>
+                    <span style="font-size: 12px; color: #94a3b8;">Instituições Atendidas</span>
+                    <h4 style="font-size: 20px; color: #ffffff; margin: 2px 0 0;">320+ ONGs</h4>
+                </div>
+                <div>
+                    <span style="font-size: 12px; color: #94a3b8;">Cidades com Coleta</span>
+                    <h4 style="font-size: 20px; color: #ffffff; margin: 2px 0 0;">8 Municípios</h4>
+                </div>
+                <div>
+                    <span style="font-size: 12px; color: #94a3b8;">Refeições Proporcionadas</span>
+                    <h4 style="font-size: 20px; color: #ffffff; margin: 2px 0 0;">381.000+ Pratos</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- TÍTULO DAS CAMPANHAS ATIVAS -->
+        <div style="text-align: center; margin-bottom: 35px;">
+            <span class="tag" style="background: #ede9fe; color: #7c3aed;">📢 Mobilização Comunitária</span>
+            <h1 style="font-size: 36px; margin: 10px 0;">Campanhas Solidárias Ativas</h1>
+            <p style="color: #64748b; max-width: 650px; margin: auto; font-size: 15px;">
+                Participe das ações temáticas sazonais. Você pode doar alimentos como empresa, receber pela sua instituição ou atuar no transporte voluntário.
+            </p>
+        </div>
+
+        <!-- GRID DE CAMPANHAS ATIVAS -->
+        <section id="gridCampanhas" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; margin-bottom: 50px;">
+            
+            <!-- CAMPANHA 1: INVERNO SOLIDÁRIO -->
+            <div class="campanha-card">
+                <div class="campanha-banner" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=800&auto=format&fit=crop');">
+                    <span class="campanha-tag-urgencia" style="background: #fee2e2; color: #ef4444;">🔴 Alta Urgência</span>
+                    <h3 style="color: #ffffff; font-size: 20px; margin: 0;">Campanha de Inverno: Sopas & Alimentos Quentes</h3>
+                </div>
+                <div style="padding: 22px; display: flex; flex-direction: column; flex: 1;">
+                    <p style="color: #64748b; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">
+                        Arrecadação de legumes, grãos, caldos e pães para distribuição noturna a moradores de rua e abrigos temporários durante frentes frias.
+                    </p>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700;">
+                            <span style="color: #7c3aed;">Progresso da Meta</span>
+                            <span style="color: #1e293b;">18.500 kg / 25.000 kg (74%)</span>
+                        </div>
+                        <div class="barra-progresso-container">
+                            <div class="barra-progresso-preenchimento" style="width: 74%;"></div>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 12px; color: #64748b; display: flex; justify-content: space-between; margin-bottom: 18px; border-top: 1px solid #f1f5f9; padding-top: 10px;">
+                        <span>👥 <strong>42</strong> Empresas Parceiras</span>
+                        <span>⏰ Encerra em <strong>12 dias</strong></span>
+                    </div>
+
+                    <button onclick="vincularDoacaoCampanha('Campanha de Inverno')" class="btn-cadastro" style="width: 100%; margin-top: auto; background: #7c3aed;">
+                        ❤️ Associar Doação à Campanha
+                    </button>
+                </div>
+            </div>
+
+            <!-- CAMPANHA 2: NATAL SOLIDÁRIO -->
+            <div class="campanha-card">
+                <div class="campanha-banner" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=800&auto=format&fit=crop');">
+                    <span class="campanha-tag-urgencia" style="background: #fef3c7; color: #b45309;">🟠 Planejamento Ativo</span>
+                    <h3 style="color: #ffffff; font-size: 20px; margin: 0;">Natal Sem Fome: Ceias Comunitárias</h3>
+                </div>
+                <div style="padding: 22px; display: flex; flex-direction: column; flex: 1;">
+                    <p style="color: #64748b; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">
+                        Mobilização especial de supermercados e restaurantes para viabilizar refeições completas de final de ano para 5.000 famílias em vulnerabilidade.
+                    </p>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700;">
+                            <span style="color: #f97316;">Progresso da Meta</span>
+                            <span style="color: #1e293b;">12.200 kg / 30.000 kg (40%)</span>
+                        </div>
+                        <div class="barra-progresso-container">
+                            <div class="barra-progresso-preenchimento" style="width: 40%; background: linear-gradient(90deg, #f97316, #e11d48);"></div>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 12px; color: #64748b; display: flex; justify-content: space-between; margin-bottom: 18px; border-top: 1px solid #f1f5f9; padding-top: 10px;">
+                        <span>👥 <strong>28</strong> Instituições Cadastradas</span>
+                        <span>⏰ Meta Contínua</span>
+                    </div>
+
+                    <button onclick="vincularDoacaoCampanha('Natal Sem Fome')" class="btn-cadastro" style="width: 100%; margin-top: auto; background: #f97316;">
+                        ❤️ Associar Doação à Campanha
+                    </button>
+                </div>
+            </div>
+
+            <!-- CAMPANHA 3: VOLTA ÀS AULAS -->
+            <div class="campanha-card">
+                <div class="campanha-banner" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop');">
+                    <span class="campanha-tag-urgencia" style="background: #d1fae5; color: #065f46;">🟢 Meta em Andamento</span>
+                    <h3 style="color: #ffffff; font-size: 20px; margin: 0;">Nutrição Infantil: Merenda Solidária</h3>
+                </div>
+                <div style="padding: 22px; display: flex; flex-direction: column; flex: 1;">
+                    <p style="color: #64748b; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">
+                        Foco em frutas frescas, sucos naturais, laticínios e pães nutritivos destinados a creches comunitárias e projetos de contraturno escolar.
+                    </p>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700;">
+                            <span style="color: #10b981;">Progresso da Meta</span>
+                            <span style="color: #1e293b;">8.900 kg / 10.000 kg (89%)</span>
+                        </div>
+                        <div class="barra-progresso-container">
+                            <div class="barra-progresso-preenchimento" style="width: 89%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 12px; color: #64748b; display: flex; justify-content: space-between; margin-bottom: 18px; border-top: 1px solid #f1f5f9; padding-top: 10px;">
+                        <span>👥 <strong>35</strong> Creches Atendidas</span>
+                        <span>⏰ Encerra em <strong>8 dias</strong></span>
+                    </div>
+
+                    <button onclick="vincularDoacaoCampanha('Merenda Solidária')" class="btn-cadastro" style="width: 100%; margin-top: auto; background: #10b981;">
+                        ❤️ Associar Doação à Campanha
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 <strong>SaciadosHub</strong> • Campanhas Solidárias e Mobilização Social.</p>
+    </footer>
+
+    <script src="notificacoes-tema.js"></script>
+    <script src="saci-ai.js"></script>
+    <script>
+        function vincularDoacaoCampanha(nomeCampanha) {
+            const usuarioSalvo = JSON.parse(localStorage.getItem("usuarioAtual"));
+            if (!usuarioSalvo) {
+                alert(`ℹ️ Para associar alimentos à "${nomeCampanha}", faça login como Doador ou Instituição.`);
+                window.location.href = "login.html";
+            } else if (String(usuarioSalvo.tipo || "").toLowerCase() === "restaurante") {
+                alert(`✓ Ótimo! Redirecionando para o formulário de anúncio de doação com a campanha "${nomeCampanha}" vinculada.`);
+                window.location.href = "painel-restaurante.html";
+            } else if (String(usuarioSalvo.tipo || "").toLowerCase() === "ong") {
+                alert(`✓ Sua ONG foi sinalizada para prioridade no recebimento da "${nomeCampanha}".`);
+                window.location.href = "painel-ong.html";
+            } else {
+                window.location.href = "mapa.html";
+            }
+        }
+    </script>
+
+</body>
+</html>

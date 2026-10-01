@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cadastro - SaciadosHub</title>
+
+    <link
+        rel="stylesheet"
+        href="cadastro-rapido.css"
+    >
+    <link rel="stylesheet" href="saci-ai.css">
+
+</head>
+
+<body>
+
+    <main class="cadastro-container">
+
+        <!-- =========================
+             ASSISTENTE
+        ========================== -->
+
+        <section class="assistente">
+
+            <div class="assistente-icone">
+                🤖
+            </div>
+
+            <div class="assistente-texto">
+
+                <h2>
+                    Assistente SaciadosHub
+                </h2>
+
+                <p id="mensagemAssistente">
+                    Olá! Vou ajudar você a fazer seu cadastro.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CADASTRO
+        ========================== -->
+
+        <section class="cadastro-card">
+
+            <h1>
+                Criar cadastro
+            </h1>
+
+            <p class="subtitulo">
+                Preencha seus dados ou use o assistente por voz.
+            </p>
+
+
+            <form id="formCadastro">
+
+
+                <!-- TIPO -->
+
+                <div class="campo">
+
+                    <label for="tipo">
+                        Tipo de usuário
+                    </label>
+
+                    <select
+                        id="tipo"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione uma opção
+                        </option>
+
+                        <option value="restaurante">
+                            🍽️ Restaurante
+                        </option>
+
+                        <option value="ong">
+                            🏢 ONG
+                        </option>
+
+                        <option value="voluntario">
+                            🚚 Voluntário
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- NOME -->
+
+                <div class="campo">
+
+                    <label for="nome">
+                        Nome
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite ou fale seu nome"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="campo">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TELEFONE -->
+
+                <div class="campo">
+
+                    <label for="telefone">
+                        Telefone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefone"
+                        placeholder="Digite seu telefone"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ENDEREÇO -->
+
+                <div class="campo">
+
+                    <label for="endereco">
+                        Endereço
+                    </label>
+
+                    <input
+                        type="text"
+                        id="endereco"
+                        placeholder="Rua, número..."
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CIDADE -->
+
+                <div class="campo">
+
+                    <label for="cidade">
+                        Cidade
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cidade"
+                        placeholder="Digite sua cidade"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ESTADO -->
+
+                <div class="campo">
+
+                    <label for="estado">
+                        Estado
+                    </label>
+
+                    <input
+                        type="text"
+                        id="estado"
+                        placeholder="Digite seu estado"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SENHA -->
+
+                <div class="campo">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+
+                    <small>
+                        Por segurança, digite sua senha manualmente.
+                    </small>
+
+                </div>
+
+
+                <!-- BOTÕES DE VOZ -->
+
+                <div class="botoes-voz">
+
+                    <button
+                        type="button"
+                        id="btnFalar"
+                        class="btn-voz"
+                    >
+                        🎤 Falar
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="btnRepetir"
+                        class="btn-repetir"
+                    >
+                        🔊 Repetir pergunta
+                    </button>
+
+                </div>
+
+
+                <!-- CADASTRAR -->
+
+                <button
+                    type="submit"
+                    class="btn-cadastrar"
+                >
+                    Criar cadastro
+                </button>
+
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="cadastro-rapido.js"></script>
+    <script src="saci-ai.js"></script>
+
+</body>
+
+</html>

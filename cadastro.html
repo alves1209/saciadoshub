@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro - SaciadosHub</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🍽️ <strong>SaciadosHub</strong>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Início</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="login.html">Entrar</a>
+
+    </nav>
+
+</header>
+
+
+<section class="cadastro">
+
+    <div class="cadastro-box">
+
+        <h1>Criar Conta</h1>
+
+        <p>
+            Preencha os dados abaixo para começar.
+        </p>
+
+
+        <!-- =====================================
+             CADASTRO RÁPIDO
+        ====================================== -->
+
+        <div class="cadastro-rapido">
+
+            <p>
+                ✨ Quer fazer seu cadastro de forma mais rápida?
+            </p>
+
+            <a
+                href="cadastro-rapido.html"
+                class="btn-cadastro-rapido">
+
+                ✨ Cadastro rápido
+
+            </a>
+
+        </div>
+
+
+        <div class="separador">
+
+            <span>OU</span>
+
+        </div>
+
+
+        <!-- =====================================
+             CADASTRO NORMAL
+        ====================================== -->
+
+        <form id="formCadastro">
+
+
+            <!-- TIPO DE USUÁRIO -->
+
+            <label for="tipo">
+                Tipo de Usuário
+            </label>
+
+            <select
+                id="tipo"
+                required
+            >
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="Restaurante">
+                    Restaurante
+                </option>
+
+                <option value="ONG">
+                    ONG
+                </option>
+
+                <option value="Voluntario">
+                    Voluntário
+                </option>
+
+            </select>
+
+
+            <!-- NOME -->
+
+            <label for="nome">
+                Nome
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome"
+                required
+            >
+
+
+            <!-- EMAIL -->
+
+            <label for="email">
+                E-mail
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Digite seu e-mail"
+                required
+            >
+
+
+            <!-- TELEFONE -->
+
+            <label for="telefone">
+                Telefone
+            </label>
+
+            <input
+                type="tel"
+                id="telefone"
+                placeholder="(11) 99999-9999"
+                required
+            >
+
+
+            <!-- ENDEREÇO -->
+
+            <label for="endereco">
+                Endereço
+            </label>
+
+            <input
+                type="text"
+                id="endereco"
+                placeholder="Rua, número"
+                required
+            >
+
+
+            <!-- CIDADE -->
+
+            <label for="cidade">
+                Cidade
+            </label>
+
+            <input
+                type="text"
+                id="cidade"
+                placeholder="Sua cidade"
+                required
+            >
+
+
+            <!-- ESTADO -->
+
+            <label for="estado">
+                Estado
+            </label>
+
+            <input
+                type="text"
+                id="estado"
+                placeholder="SP"
+                maxlength="2"
+                required
+            >
+
+
+            <!-- SENHA -->
+
+            <label for="senha">
+                Senha
+            </label>
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+                required
+            >
+
+
+            <!-- CONFIRMAR SENHA -->
+
+            <label for="confirmarSenha">
+                Confirmar Senha
+            </label>
+
+            <input
+                type="password"
+                id="confirmarSenha"
+                placeholder="Digite a senha novamente"
+                required
+            >
+
+
+            <!-- BOTÃO CADASTRAR -->
+
+            <button
+                type="submit"
+                id="btnCadastrar"
+                class="btn-cadastro"
+            >
+
+                Cadastrar
+
+            </button>
+
+
+        </form>
+
+
+        <!-- =====================================
+             LOGIN
+        ====================================== -->
+
+        <p>
+
+            Já possui conta?
+
+            <a href="login.html">
+                Faça Login
+            </a>
+
+        </p>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script src="notificacoes-tema.js"></script>
+<script src="cadastro.js"></script>
+<script src="saci-ai.js"></script>
+
+</body>
+</html>

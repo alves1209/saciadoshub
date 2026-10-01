@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaciadosHub - Portal da Transparência & Dados Abertos</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            🍽️ <strong>SaciadosHub</strong>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="mapa.html">Mapa Inteligente</a>
+            <a href="ranking.html">Ranking</a>
+            <a href="transparencia.html" style="color: #7c3aed; font-weight: 800;">Transparência</a>
+            <a href="sobre.html">Sobre Nós</a>
+            <a href="perfil.html">Meu Perfil</a>
+        </nav>
+
+        <div class="header-botoes">
+            <a href="login.html" class="btn-login">Entrar</a>
+            <a href="cadastro.html" class="btn-cadastro">Cadastrar</a>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main style="max-width: 1200px; margin: 100px auto 50px; padding: 0 20px;">
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span class="tag" style="background: #d1fae5; color: #065f46;">📊 Dados Abertos & Auditoria Social</span>
+            <h1 style="font-size: 38px; margin: 10px 0;">Portal da Transparência SaciadosHub</h1>
+            <p style="color: #64748b; max-width: 700px; margin: auto; font-size: 16px;">
+                Acompanhe em tempo real o impacto consolidado do resgate de alimentos, as emissões de carbono evitadas e a destinação de cada refeição em nossa rede.
+            </p>
+        </div>
+
+        <!-- CARDS DE IMPACTO CONSOLIDADO -->
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px;">
+            <div class="card" style="width: 100%;">
+                <div style="font-size: 32px; margin-bottom: 6px;">🌱</div>
+                <h2 id="transpKg" style="color: #10b981; font-size: 32px; margin-bottom: 4px;">152.4 Ton</h2>
+                <p>Alimentos Salvos</p>
+            </div>
+
+            <div class="card" style="width: 100%;">
+                <div style="font-size: 32px; margin-bottom: 6px;">👥</div>
+                <h2 id="transpRefeicoes" style="color: #7c3aed; font-size: 32px; margin-bottom: 4px;">381.000+</h2>
+                <p>Refeições Distribuídas</p>
+            </div>
+
+            <div class="card" style="width: 100%;">
+                <div style="font-size: 32px; margin-bottom: 6px;">🌍</div>
+                <h2 id="transpCo2" style="color: #06b6d4; font-size: 32px; margin-bottom: 4px;">380 Ton</h2>
+                <p>CO₂ Evitado Estimado</p>
+            </div>
+
+            <div class="card" style="width: 100%;">
+                <div style="font-size: 32px; margin-bottom: 6px;">💧</div>
+                <h2 id="transpAgua" style="color: #3b82f6; font-size: 32px; margin-bottom: 4px;">129 M Litros</h2>
+                <p>Água Preservada</p>
+            </div>
+        </section>
+
+        <!-- GRÁFICOS INTERATIVOS CHART.JS -->
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 40px;">
+            
+            <!-- GRÁFICO 1: EVOLUÇÃO MENSAL -->
+            <div class="card" style="width: 100%; text-align: left; padding: 25px;">
+                <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 15px;">📈 Evolução Mensal de Resgates (Toneladas)</h3>
+                <canvas id="graficoEvolucaoMensal" style="max-height: 280px;"></canvas>
+            </div>
+
+            <!-- GRÁFICO 2: DISTRIBUIÇÃO POR CATEGORIA -->
+            <div class="card" style="width: 100%; text-align: left; padding: 25px;">
+                <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 15px;">🍱 Alimentos Resgatados por Categoria</h3>
+                <canvas id="graficoCategorias" style="max-height: 280px;"></canvas>
+            </div>
+
+        </section>
+
+        <!-- INDICADORES DA REDE -->
+        <section class="card" style="width: 100%; text-align: left; padding: 30px;">
+            <h3 style="font-size: 20px; color: #1e293b; margin-bottom: 20px;">🤝 Participação da Comunidade</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
+                    <h3 style="color: #7c3aed; font-size: 28px; margin-bottom: 4px;">180+</h3>
+                    <p style="color: #64748b; font-size: 13px; font-weight: 600;">Empresas Doadoras</p>
+                </div>
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
+                    <h3 style="color: #f43f5e; font-size: 28px; margin-bottom: 4px;">320+</h3>
+                    <p style="color: #64748b; font-size: 13px; font-weight: 600;">ONGs e Abrigos Ativos</p>
+                </div>
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
+                    <h3 style="color: #3b82f6; font-size: 28px; margin-bottom: 4px;">450+</h3>
+                    <p style="color: #64748b; font-size: 13px; font-weight: 600;">Voluntários de Transporte</p>
+                </div>
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
+                    <h3 style="color: #10b981; font-size: 28px; margin-bottom: 4px;">98.4%</h3>
+                    <p style="color: #64748b; font-size: 13px; font-weight: 600;">Taxa de Eficiência / Entrega</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 <strong>SaciadosHub</strong> • Transparência e Prestação de Contas Pública.</p>
+    </footer>
+
+    <script src="notificacoes-tema.js"></script>
+    <script src="saci-ai.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Gráfico de Evolução Mensal
+            const ctxEvolucao = document.getElementById("graficoEvolucaoMensal")?.getContext("2d");
+            if (ctxEvolucao) {
+                new Chart(ctxEvolucao, {
+                    type: "bar",
+                    data: {
+                        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+                        datasets: [{
+                            label: "Toneladas Resgatadas",
+                            data: [8.5, 9.8, 11.2, 12.0, 13.5, 14.2, 15.1, 16.0, 14.8, 15.5, 16.2, 17.0],
+                            backgroundColor: "#7c3aed",
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+
+            // 2. Gráfico de Categorias
+            const ctxCategorias = document.getElementById("graficoCategorias")?.getContext("2d");
+            if (ctxCategorias) {
+                new Chart(ctxCategorias, {
+                    type: "doughnut",
+                    data: {
+                        labels: ["Refeições Prontas", "Hortifrúti", "Padaria & Confeitaria", "Grãos & Secos", "Laticínios"],
+                        datasets: [{
+                            data: [35, 28, 18, 12, 7],
+                            backgroundColor: ["#7c3aed", "#10b981", "#f59e0b", "#3b82f6", "#f43f5e"]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { position: "bottom" } }
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

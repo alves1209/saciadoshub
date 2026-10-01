@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaciadosHub - Fale Conosco & Suporte</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            🍽️ <strong>SaciadosHub</strong>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#funciona">Como Funciona</a>
+            <a href="mapa.html">Mapa Inteligente</a>
+            <a href="sobre.html">Sobre Nós</a>
+            <a href="parceiros.html">Parceiros</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contato.html" style="color: #7c3aed; font-weight: 800;">Contato</a>
+        </nav>
+
+        <div class="header-botoes">
+            <a href="login.html" class="btn-login">Entrar</a>
+            <a href="cadastro.html" class="btn-cadastro">Cadastrar</a>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main style="max-width: 1000px; margin: 100px auto 50px; padding: 0 20px;">
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span class="tag" style="background: #ede9fe; color: #7c3aed;">💬 Central de Atendimento</span>
+            <h1 style="font-size: 36px; margin: 10px 0;">Entre em Contato com a Equipe</h1>
+            <p style="color: #64748b; max-width: 600px; margin: auto;">
+                Dúvidas, sugestões, parcerias institucionais ou suporte técnico? Preencha o formulário abaixo e responderemos rapidamente.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            
+            <!-- FORMULÁRIO DE CONTATO -->
+            <section class="card" style="width: 100%; text-align: left; padding: 30px;">
+                <h2 style="font-size: 20px; margin-bottom: 20px; color: #1e293b;">Envie sua mensagem</h2>
+                
+                <form id="formContato">
+                    <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Seu Nome Completo</label>
+                    <input type="text" id="contatoNome" placeholder="Ex: Maria Oliveira" style="width: 100%; padding: 12px; border: 1.5px solid #e2e8f0; border-radius: 8px; margin-bottom: 14px;" required>
+
+                    <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Seu E-mail de Contato</label>
+                    <input type="email" id="contatoEmail" placeholder="exemplo@dominio.com" style="width: 100%; padding: 12px; border: 1.5px solid #e2e8f0; border-radius: 8px; margin-bottom: 14px;" required>
+
+                    <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Assunto</label>
+                    <select id="contatoAssunto" style="width: 100%; padding: 12px; border: 1.5px solid #e2e8f0; border-radius: 8px; margin-bottom: 14px;" required>
+                        <option value="">Selecione o assunto</option>
+                        <option value="duvidas">Dúvidas sobre o cadastro</option>
+                        <option value="parceria">Parcerias e Doações Corporativas</option>
+                        <option value="suporte">Suporte Técnico / Dificuldades no Painel</option>
+                        <option value="imprensa">Assessoria de Imprensa e TCC</option>
+                        <option value="sugestao">Sugestão de Melhoria</option>
+                    </select>
+
+                    <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Mensagem</label>
+                    <textarea id="contatoMensagem" rows="4" placeholder="Escreva detalhadamente sua dúvida ou proposta..." style="width: 100%; padding: 12px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-family: inherit; margin-bottom: 20px;" required></textarea>
+
+                    <button type="submit" class="btn-cadastro" style="width: 100%; font-size: 15px; padding: 12px;">
+                        ✉️ Enviar Mensagem
+                    </button>
+                </form>
+            </section>
+
+            <!-- INFORMAÇÕES DE CONTATO E CANAIS -->
+            <section style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card" style="width: 100%; text-align: left; padding: 25px;">
+                    <h3 style="font-size: 18px; color: #7c3aed; margin-bottom: 12px;">📍 Canais Oficiais</h3>
+                    <p style="color: #64748b; font-size: 14px; margin-bottom: 10px;">
+                        📧 <strong>E-mail Institucional:</strong><br>
+                        <a href="mailto:contato@saciadoshub.org" style="color: #7c3aed; text-decoration: none;">contato@saciadoshub.org</a>
+                    </p>
+                    <p style="color: #64748b; font-size: 14px; margin-bottom: 10px;">
+                        ⏰ <strong>Horário de Atendimento:</strong><br>
+                        Segunda a Sexta: 08h às 20h<br>Sábados: 09h às 14h
+                    </p>
+                    <p style="color: #64748b; font-size: 14px;">
+                        🏙️ <strong>Sede Operacional:</strong><br>
+                        São Paulo - SP (Rede Nacional Digital)
+                    </p>
+                </div>
+
+                <div class="card" style="width: 100%; text-align: left; padding: 25px;">
+                    <h3 style="font-size: 18px; color: #f97316; margin-bottom: 12px;">📱 Redes Sociais & Comunidade</h3>
+                    <p style="color: #64748b; font-size: 14px; line-height: 1.8;">
+                        Acompanhe nossos resgates diários e histórias de impacto:<br>
+                        • <strong>Instagram:</strong> @saciadoshub.oficial<br>
+                        • <strong>LinkedIn:</strong> linkedin.com/company/saciadoshub<br>
+                        • <strong>GitHub:</strong> github.com/saciadoshub-tcc
+                    </p>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 <strong>SaciadosHub</strong> • Canal de Comunicação e Suporte.</p>
+    </footer>
+
+    <script src="notificacoes-tema.js"></script>
+    <script src="saci-ai.js"></script>
+    <script>
+        document.getElementById("formContato").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("✓ Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.");
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>

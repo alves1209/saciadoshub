@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Painel ONG - SaciadoHub</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="notificacoes-tema.css">
+<link rel="stylesheet" href="saci-ai.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+🍽️ <strong>SaciadosHub</strong>
+</div>
+
+
+<nav>
+
+<a href="index.html">
+Início
+</a>
+
+<a href="mapa.html">
+Mapa Inteligente
+</a>
+
+<a href="#" id="sair">
+Sair
+</a>
+
+</nav>
+
+</header>
+
+
+
+
+
+<section class="painel">
+
+
+<div class="painel-box">
+
+
+
+<h1 id="nomeONG">
+Bem-vinda ONG! 🏢
+</h1>
+
+
+
+<p>
+Gerencie suas solicitações e acompanhe as doações recebidas.
+</p>
+
+
+
+
+
+
+
+<!-- DASHBOARD ONG -->
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+<h2 id="totalDisponiveis">
+0
+</h2>
+
+<p>
+📦 Doações Disponíveis
+</p>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h2 id="totalRecebidas">
+0
+</h2>
+
+<p>
+✅ Doações Recebidas
+</p>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h2 id="totalAlimentos">
+0
+</h2>
+
+<p>
+🍱 Alimentos Recebidos
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================
+     CADASTRO DE NECESSIDADES DA ONG
+====================================== -->
+<section class="lista" style="text-align: left; margin-bottom: 30px;">
+    <h2>📢 Informar Necessidade de Alimentos da Instituição</h2>
+    <p style="color: #64748b; font-size: 14px; margin-bottom: 20px;">
+        Informe quais itens e quantidades sua instituição precisa para que doadores e empresas possam atender sua demanda no Mapa Inteligente.
+    </p>
+
+    <form id="formNecessidadeONG" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+        <div>
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Item / Alimento Necessário:</label>
+            <input type="text" id="necItem" placeholder="Ex: Arroz, Leite, Legumes..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #cbd5e1;" required>
+        </div>
+
+        <div>
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Categoria:</label>
+            <select id="necCategoria" style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #cbd5e1;" required>
+                <option value="arroz">Arroz</option>
+                <option value="feijao">Feijão</option>
+                <option value="macarrao">Macarrão</option>
+                <option value="leite">Leite</option>
+                <option value="frutas">Frutas</option>
+                <option value="legumes">Legumes</option>
+                <option value="verduras">Verduras</option>
+                <option value="nao_pereciveis">Produtos Não Perecíveis</option>
+                <option value="outros">Outros Alimentos</option>
+            </select>
+        </div>
+
+        <div>
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Quantidade Necessária:</label>
+            <input type="number" id="necQuantidade" min="1" placeholder="Ex: 50" style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #cbd5e1;" required>
+        </div>
+
+        <div>
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Unidade de Medida:</label>
+            <select id="necUnidade" style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #cbd5e1;" required>
+                <option value="kg">Quilogramas (kg)</option>
+                <option value="litros">Litros (L)</option>
+                <option value="unidades">Unidades / Pacotes</option>
+                <option value="caixas">Caixas</option>
+            </select>
+        </div>
+
+        <div>
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Nível de Urgência:</label>
+            <select id="necUrgencia" style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #cbd5e1;" required>
+                <option value="alta">🔴 Alta Urgência (Estoque Crítico)</option>
+                <option value="media">🟠 Média Urgência (Reposição)</option>
+                <option value="baixa">🟢 Baixa Urgência (Preventiva)</option>
+            </select>
+        </div>
+
+        <div>
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Data Limite para Recebimento:</label>
+            <input type="date" id="necDataLimite" style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #cbd5e1;" required>
+        </div>
+
+        <div style="grid-column: 1 / -1;">
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Observações / Famílias Atendidas:</label>
+            <input type="text" id="necObservacoes" placeholder="Ex: Para a sopa comunitária desta sexta-feira..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #cbd5e1;">
+        </div>
+
+        <div style="grid-column: 1 / -1;">
+            <button type="submit" class="btn-cadastro" style="background: linear-gradient(135deg, #7c3aed, #f97316); width: 100%; font-size: 15px; padding: 12px;">
+                📢 Publicar Necessidade no Mapa e na Rede
+            </button>
+        </div>
+    </form>
+</section>
+
+<!-- LISTA DE NECESSIDADES CADASTRADAS PELA ONG -->
+<section class="lista" style="text-align: left; margin-bottom: 30px;">
+    <h2>📋 Minhas Necessidades Ativas</h2>
+    <div id="listaNecessidadesONG" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px;">
+        <!-- Preenchido via script -->
+    </div>
+</section>
+
+<!-- GRAFICO -->
+
+
+<section class="lista">
+
+
+<h2>
+📊 Impacto da ONG
+</h2>
+
+
+<canvas id="graficoONG"></canvas>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- DOAÇÕES DISPONÍVEIS -->
+
+
+<section class="lista">
+
+
+<h2>
+🍱 Doações Disponíveis
+</h2>
+
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Alimento
+</th>
+
+
+<th>
+Quantidade
+</th>
+
+
+<th>
+Validade
+</th>
+
+
+<th>
+Local
+</th>
+
+
+<th>
+Status
+</th>
+
+
+<th>
+Ação
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody id="listaDoacoesONG">
+
+
+</tbody>
+
+
+
+</table>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- HISTÓRICO -->
+
+
+<section class="lista">
+
+
+<h2>
+📊 Histórico de Doações Recebidas
+</h2>
+
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Alimento
+</th>
+
+
+<th>
+Quantidade
+</th>
+
+
+<th>
+Restaurante
+</th>
+
+
+<th>
+Data
+</th>
+
+
+<th>
+Status
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="historicoONG">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="notificacoes-tema.js"></script>
+<script src="ong.js"></script>
+<script src="saci-ai.js"></script>
+
+</body>
+
+</html>

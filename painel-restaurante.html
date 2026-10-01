@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel do Restaurante - SaciadoHub</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        🍽️ <strong>SaciadosHub</strong>
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="mapa.html">
+            Mapa Inteligente
+        </a>
+
+        <a href="#" id="sair">
+            Sair
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="painel">
+
+    <div class="painel-box">
+
+
+        <h1 id="nomeRestaurante">
+            Bem-vindo, Restaurante! 🍽️
+        </h1>
+
+
+        <p>
+            Gerencie suas doações e encontre ONGs próximas.
+        </p>
+
+
+
+        <!-- ================================
+             CRIAR DOAÇÃO
+        ================================= -->
+
+        <section class="lista">
+
+            <h2>
+                📦 Anunciar Alimento Disponível
+            </h2>
+
+
+            <form id="formDoacao">
+
+
+                <label for="alimento">
+                    Tipo de alimento
+                </label>
+
+                <input
+                    type="text"
+                    id="alimento"
+                    placeholder="Ex: Arroz e feijão"
+                    required
+                >
+
+
+                <label for="quantidade">
+                    Quantidade
+                </label>
+
+                <input
+                    type="number"
+                    id="quantidade"
+                    placeholder="Ex: 20"
+                    min="1"
+                    required
+                >
+
+
+                <label for="validade">
+                    Validade
+                </label>
+
+                <input
+                    type="datetime-local"
+                    id="validade"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="btn-cadastro"
+                >
+                    📦 Anunciar Doação
+                </button>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- =====================================
+             NECESSIDADES URGENTES DAS ONGS (MATCH)
+        ====================================== -->
+        <section class="lista" style="text-align: left; margin-bottom: 30px;">
+            <h2>📢 Demandas & Necessidades das ONGs Próximas</h2>
+            <p style="color: #64748b; font-size: 14px; margin-bottom: 15px;">
+                Estas instituições cadastraram carências urgentes de alimentos. Ao anunciar um item correspondente, o sistema sugerirá o direcionamento prioritário.
+            </p>
+
+            <div id="listaDemandasOngsRestaurante" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+                <!-- Preenchido via script -->
+            </div>
+        </section>
+
+
+
+        <!-- ================================
+             MAPA
+        ================================= -->
+
+        <section class="mapa-container">
+
+            <h2>
+                🗺️ ONGs próximas
+            </h2>
+
+            <p>
+                Encontre organizações próximas para
+                encaminhar suas doações.
+            </p>
+
+
+            <div
+                id="mapaRestaurante"
+                class="mapa-painel"
+            ></div>
+
+        </section>
+
+
+
+        <!-- ================================
+             DOAÇÕES
+        ================================= -->
+
+        <section class="lista">
+
+            <h2>
+                📋 Minhas Doações
+            </h2>
+
+
+            <div id="listaDoacoesRestaurante"></div>
+
+        </section>
+
+
+    </div>
+
+</section>
+
+
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<script src="notificacoes-tema.js"></script>
+<script src="painel-restaurante.js"></script>
+<script src="saci-ai.js"></script>
+
+
+</body>
+
+</html>

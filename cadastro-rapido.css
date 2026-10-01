@@ -1,0 +1,361 @@
+/* =====================================
+   RESET
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================
+   BODY
+===================================== */
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(76, 175, 80, 0.18),
+            transparent 400px
+        ),
+
+        radial-gradient(
+            circle at bottom left,
+            rgba(255, 152, 0, 0.15),
+            transparent 450px
+        ),
+
+        #f5f7f5;
+
+    min-height: 100vh;
+
+    padding: 30px;
+
+}
+
+
+/* =====================================
+   CONTAINER
+===================================== */
+
+.cadastro-container {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =====================================
+   ASSISTENTE
+===================================== */
+
+.assistente {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+}
+
+
+.assistente-icone {
+
+    width: 65px;
+
+    height: 65px;
+
+    min-width: 65px;
+
+    border-radius: 50%;
+
+    background: #2e7d32;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 32px;
+
+}
+
+
+.assistente-texto h2 {
+
+    color: #2e7d32;
+
+    margin-bottom: 6px;
+
+}
+
+
+.assistente-texto p {
+
+    color: #555;
+
+    line-height: 1.5;
+
+}
+
+
+/* =====================================
+   CARD
+===================================== */
+
+.cadastro-card {
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+
+}
+
+
+.cadastro-card h1 {
+
+    color: #1f2933;
+
+    margin-bottom: 8px;
+
+}
+
+
+.subtitulo {
+
+    color: #777;
+
+    margin-bottom: 28px;
+
+}
+
+
+/* =====================================
+   CAMPOS
+===================================== */
+
+.campo {
+
+    margin-bottom: 18px;
+
+}
+
+
+.campo label {
+
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+    color: #333;
+
+}
+
+
+.campo input,
+.campo select {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d0d5dd;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    background: white;
+
+}
+
+
+.campo input:focus,
+.campo select:focus {
+
+    border-color: #2e7d32;
+
+    box-shadow:
+        0 0 0 3px rgba(46, 125, 50, 0.1);
+
+}
+
+
+.campo small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: #777;
+
+}
+
+
+/* =====================================
+   BOTÕES
+===================================== */
+
+.botoes-voz {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 22px;
+
+}
+
+
+.botoes-voz button {
+
+    flex: 1;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+}
+
+
+.btn-voz {
+
+    background: #2e7d32;
+
+    color: white;
+
+}
+
+
+.btn-repetir {
+
+    background: #eeeeee;
+
+    color: #333;
+
+}
+
+
+.btn-voz:hover {
+
+    background: #256b29;
+
+}
+
+
+.btn-repetir:hover {
+
+    background: #dddddd;
+
+}
+
+
+/* =====================================
+   CADASTRAR
+===================================== */
+
+.btn-cadastrar {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ff9800;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.btn-cadastrar:hover {
+
+    background: #e68900;
+
+}
+
+
+/* =====================================
+   CELULAR
+===================================== */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 15px;
+
+    }
+
+
+    .cadastro-card {
+
+        padding: 22px;
+
+    }
+
+
+    .assistente {
+
+        align-items: flex-start;
+
+    }
+
+
+    .botoes-voz {
+
+        flex-direction: column;
+
+    }
+
+}

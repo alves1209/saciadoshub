@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaciadosHub - Perguntas Frequentes (FAQ)</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+
+    <style>
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .faq-pergunta {
+            padding: 18px 22px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-pergunta:hover {
+            background: #f8fafc;
+            color: #7c3aed;
+        }
+
+        .faq-resposta {
+            padding: 0 22px 18px;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.7;
+            display: none;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .faq-item.aberto .faq-resposta {
+            display: block;
+        }
+
+        .faq-item.aberto .faq-icone {
+            transform: rotate(180deg);
+        }
+
+        .faq-icone {
+            transition: transform 0.2s;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            🍽️ <strong>SaciadosHub</strong>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#funciona">Como Funciona</a>
+            <a href="mapa.html">Mapa Inteligente</a>
+            <a href="sobre.html">Sobre Nós</a>
+            <a href="parceiros.html">Parceiros</a>
+            <a href="faq.html" style="color: #7c3aed; font-weight: 800;">FAQ</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+
+        <div class="header-botoes">
+            <a href="login.html" class="btn-login">Entrar</a>
+            <a href="cadastro.html" class="btn-cadastro">Cadastrar</a>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main style="max-width: 900px; margin: 100px auto 50px; padding: 0 20px;">
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span class="tag" style="background: #ede9fe; color: #7c3aed;">💡 Dúvidas Frequentes</span>
+            <h1 style="font-size: 36px; margin: 10px 0;">Como Podemos Ajudar Você?</h1>
+            <p style="color: #64748b; max-width: 600px; margin: auto;">
+                Reunimos as respostas para as principais dúvidas sobre o funcionamento do ecossistema SaciadosHub.
+            </p>
+        </div>
+
+        <!-- LISTA DE PERGUNTAS E RESPOSTAS (ACCORDION) -->
+        <section>
+            
+            <div class="faq-item aberto">
+                <div class="faq-pergunta">
+                    <span>1. Como funciona o cadastro na plataforma?</span>
+                    <span class="faq-icone">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    O cadastro é gratuito e simples. Basta clicar em "Cadastrar", escolher o seu perfil (Doador/Restaurante, ONG/Instituição Beneficente ou Voluntário) e preencher seus dados básicos de contato e endereço. Também oferecemos a opção de <strong>Cadastro Rápido com Assistente por Voz</strong>.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>2. Como os restaurantes e empresas doam alimentos?</span>
+                    <span class="faq-icone">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    Após fazer login no Painel do Restaurante, o doador preenche o formulário informando o tipo de alimento, quantidade (em kg ou unidades), prazo de validade e horário disponível para retirada. Automaticamente, a doação é indexada no <strong>Mapa Inteligente</strong> e enviada para o <strong>Match Inteligente</strong> com as ONGs próximas.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>3. Quem pode receber as doações de alimentos?</span>
+                    <span class="faq-icone">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    ONGs, creches comunitárias, casas de acolhimento, igrejas, projetos sociais e cozinhas solidárias devidamente cadastradas que prestam assistência a pessoas em situação de vulnerabilidade nutricional.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>4. Como funciona a retirada e o transporte pelos voluntários?</span>
+                    <span class="faq-icone">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    Quando uma ONG reserva uma doação mas não possui veículo disponível, ela pode solicitar apoio logístico. Voluntários cadastrados recebem a notificação da missão no mapa, aceitam a entrega, realizam a coleta com recipientes térmicos e efetuam a entrega na instituição com confirmação via QR Code.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>5. Como é garantida a segurança e qualidade dos alimentos?</span>
+                    <span class="faq-icone">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    A plataforma segue os critérios da <strong>Lei Federal nº 14.016/2020</strong> (combate ao desperdício e doação de excedentes de alimentos). Apenas alimentos próprios para consumo humano, dentro do prazo de validade e mantidos sob condições sanitárias adequadas podem ser anunciados.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>6. Como as empresas geram seus Certificados ESG de Impacto?</span>
+                    <span class="faq-icone">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    Basta acessar o <strong>Meu Perfil</strong> ou a área de relatórios e clicar em <em>"Certificado de Impacto"</em>. O sistema calcula automaticamente o total de kg resgatados, refeições geradas e CO₂ evitado, gerando um documento auditável com QR Code pronto para impressão ou download em PDF.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>7. O que é o PIX Solidário no SaciadosHub?</span>
+                    <span class="faq-icone">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    É uma ferramenta voluntária que permite a qualquer cidadão ou apoiador contribuir diretamente com custos de combustível para os voluntários e aquisição de embalagens seguras para as ONGs parceiras, aumentando o alcance dos resgates.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CONTATO ADICIONAL -->
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0;">
+            <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 6px;">Não encontrou a resposta que procurava?</h3>
+            <p style="color: #64748b; font-size: 14px; margin-bottom: 16px;">Nossa equipe de suporte está sempre pronta para ajudar.</p>
+            <a href="contato.html" class="btn-cadastro" style="text-decoration: none;">
+                Falar com o Suporte ➔
+            </a>
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 <strong>SaciadosHub</strong> • Central de Ajuda e FAQ.</p>
+    </footer>
+
+    <script src="notificacoes-tema.js"></script>
+    <script src="saci-ai.js"></script>
+    <script>
+        document.querySelectorAll(".faq-pergunta").forEach(pergunta => {
+            pergunta.addEventListener("click", () => {
+                const item = pergunta.parentElement;
+                item.classList.toggle("aberto");
+            });
+        });
+    </script>
+
+</body>
+</html>

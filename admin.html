@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaciadosHub - Painel Administrativo & Centro de Operações (COI)</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+
+    <style>
+        .admin-sidebar-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 25px;
+            max-width: 1400px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .admin-menu {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            height: fit-content;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .admin-menu button {
+            width: 100%;
+            padding: 12px 14px;
+            border: none;
+            background: none;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+            color: #64748b;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+        }
+
+        .admin-menu button:hover,
+        .admin-menu button.ativo {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+
+        .secao-admin {
+            display: none;
+        }
+
+        .secao-admin.ativa {
+            display: block;
+        }
+
+        .tabela-admin {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        .tabela-admin th {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 12px;
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .tabela-admin td {
+            padding: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .trilha-auditoria-item {
+            background: #f8fafc;
+            border-left: 4px solid #7c3aed;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .admin-sidebar-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            🍽️ <strong>SaciadosHub</strong> <span style="font-size: 12px; background: #0f172a; color: #fff; padding: 2px 8px; border-radius: 6px; margin-left: 8px;">ADMIN / COI</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="mapa.html">Mapa Inteligente</a>
+            <a href="transparencia.html">Transparência</a>
+            <a href="perfil.html">Perfil</a>
+        </nav>
+
+        <div class="header-botoes">
+            <button id="btnSairAdmin" class="btn-login" style="border-color: #ef4444; color: #ef4444;">
+                Sair do Admin
+            </button>
+        </div>
+    </header>
+
+    <!-- LAYOUT DO PAINEL ADMINISTRATIVO -->
+    <main class="admin-sidebar-layout">
+        
+        <!-- MENU LATERAL DO ADMINISTRADOR -->
+        <aside class="admin-menu">
+            <h3 style="font-size: 14px; font-weight: 800; color: #1e293b; text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.5px;">
+                ⚙️ Gestão da Rede
+            </h3>
+            <button class="btn-aba-admin ativo" data-alvo="secaoDashboard">
+                📊 Visão Geral & KPIs
+            </button>
+            <button class="btn-aba-admin" data-alvo="secaoUsuarios">
+                👥 Gestão de Usuários
+            </button>
+            <button class="btn-aba-admin" data-alvo="secaoDoacoes">
+                📦 Auditoria de Doações
+            </button>
+            <button class="btn-aba-admin" data-alvo="secaoCampanhas">
+                📢 Gerenciar Campanhas
+            </button>
+            <button class="btn-aba-admin" data-alvo="secaoAuditoria">
+                🔒 Trilha de Auditoria
+            </button>
+        </aside>
+
+        <!-- ÁREA DE CONTEÚDO DAS SEÇÕES -->
+        <section style="flex: 1;">
+            
+            <!-- 1. DASHBOARD & KPIS GLOBAIS -->
+            <div id="secaoDashboard" class="secao-admin ativa">
+                <div class="card" style="width: 100%; text-align: left; margin-bottom: 25px;">
+                    <span class="tag" style="background: #ede9fe; color: #7c3aed;">Centro de Operações Inteligente</span>
+                    <h2 style="font-size: 26px; color: #1e293b; margin: 8px 0 4px;">Painel Geral da Plataforma</h2>
+                    <p style="color: #64748b; font-size: 14px;">Monitoramento consolidado de todas as conexões, coletas e resgates ativos.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 25px;">
+                    <div class="card" style="width: 100%; padding: 20px;">
+                        <h3 id="adminTotalUsuarios" style="color: #7c3aed; font-size: 30px; margin-bottom: 2px;">950+</h3>
+                        <p style="font-size: 12px; color: #64748b; font-weight: 700;">Usuários Cadastrados</p>
+                    </div>
+                    <div class="card" style="width: 100%; padding: 20px;">
+                        <h3 id="adminTotalDoacoes" style="color: #10b981; font-size: 30px; margin-bottom: 2px;">2.500+</h3>
+                        <p style="font-size: 12px; color: #64748b; font-weight: 700;">Doações Concluídas</p>
+                    </div>
+                    <div class="card" style="width: 100%; padding: 20px;">
+                        <h3 id="adminTotalKg" style="color: #f97316; font-size: 30px; margin-bottom: 2px;">152.4 Ton</h3>
+                        <p style="font-size: 12px; color: #64748b; font-weight: 700;">Alimentos Resgatados</p>
+                    </div>
+                    <div class="card" style="width: 100%; padding: 20px;">
+                        <h3 id="adminTaxaSucesso" style="color: #06b6d4; font-size: 30px; margin-bottom: 2px;">98.4%</h3>
+                        <p style="font-size: 12px; color: #64748b; font-weight: 700;">Taxa de Efetividade</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. GESTÃO DE USUÁRIOS -->
+            <div id="secaoUsuarios" class="secao-admin">
+                <div class="card" style="width: 100%; text-align: left;">
+                    <h2 style="font-size: 20px; color: #1e293b; margin-bottom: 15px;">👥 Usuários Registrados na Rede</h2>
+                    <div style="overflow-x: auto;">
+                        <table class="tabela-admin">
+                            <thead>
+                                <tr>
+                                    <th>Nome / Razão Social</th>
+                                    <th>E-mail</th>
+                                    <th>Tipo</th>
+                                    <th>Cidade/UF</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTabelaUsuariosCorpo">
+                                <!-- Preenchido dinamicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. AUDITORIA DE DOAÇÕES -->
+            <div id="secaoDoacoes" class="secao-admin">
+                <div class="card" style="width: 100%; text-align: left;">
+                    <h2 style="font-size: 20px; color: #1e293b; margin-bottom: 15px;">📦 Registro e Auditoria de Doações</h2>
+                    <div style="overflow-x: auto;">
+                        <table class="tabela-admin">
+                            <thead>
+                                <tr>
+                                    <th>Alimento</th>
+                                    <th>Quantidade</th>
+                                    <th>Doador</th>
+                                    <th>ONG Destino</th>
+                                    <th>Status</th>
+                                    <th>Comprovante</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTabelaDoacoesCorpo">
+                                <!-- Preenchido dinamicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. GESTÃO DE CAMPANHAS -->
+            <div id="secaoCampanhas" class="secao-admin">
+                <div class="card" style="width: 100%; text-align: left; margin-bottom: 25px;">
+                    <h2 style="font-size: 20px; color: #1e293b; margin-bottom: 15px;">📢 Lançar Nova Campanha Solidária</h2>
+                    <form id="formNovaCampanha" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Nome da Campanha:</label>
+                            <input type="text" id="novaCampanhaNome" placeholder="Ex: Dia das Crianças com Frutas" style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #e2e8f0;" required>
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Meta de Alimentos (em kg):</label>
+                            <input type="number" id="novaCampanhaMeta" placeholder="Ex: 5000" style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #e2e8f0;" required>
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Descrição & Objetivo:</label>
+                            <textarea id="novaCampanhaDescricao" rows="3" placeholder="Descreva os alimentos prioritários e o público atendido..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid #e2e8f0; font-family: inherit;" required></textarea>
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <button type="submit" class="btn-cadastro" style="width: 100%; background: #7c3aed;">
+                                🚀 Publicar Campanha na Rede
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 5. TRILHA DE AUDITORIA (LOGS DE SEGURANÇA) -->
+            <div id="secaoAuditoria" class="secao-admin">
+                <div class="card" style="width: 100%; text-align: left;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h2 style="font-size: 20px; color: #1e293b; margin: 0;">🔒 Trilha de Auditoria & Rastreabilidade</h2>
+                        <span style="font-size: 12px; color: #10b981; font-weight: 700;">✓ Hash Imutável Ativo</span>
+                    </div>
+                    <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">
+                        Registro automático e imutável de todas as transações, cadastros, alterações e confirmações de entregas para auditoria de órgãos fiscalizadores e comitê do TCC.
+                    </p>
+
+                    <div id="listaTrilhaAuditoria">
+                        <!-- Itens preenchidos via script -->
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 <strong>SaciadosHub</strong> • Painel Administrativo de Auditoria e Governança.</p>
+    </footer>
+
+    <script src="notificacoes-tema.js"></script>
+    <script src="admin.js"></script>
+    <script src="saci-ai.js"></script>
+
+</body>
+</html>

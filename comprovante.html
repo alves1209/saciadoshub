@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaciadosHub - Comprovante Digital de Entrega</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notificacoes-tema.css">
+    <link rel="stylesheet" href="saci-ai.css">
+
+    <style>
+        .recibo-container {
+            max-width: 700px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .recibo-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .recibo-topo {
+            text-align: center;
+            border-bottom: 2px dashed #cbd5e1;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        .recibo-topo h1 {
+            font-size: 24px;
+            color: #1e293b;
+            margin: 6px 0 4px;
+        }
+
+        .recibo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .recibo-campo label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .recibo-campo strong {
+            font-size: 15px;
+            color: #1e293b;
+        }
+
+        .recibo-status-box {
+            background: #ecfdf5;
+            border: 1.5px solid #10b981;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .recibo-rodape {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px dashed #cbd5e1;
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        @media print {
+            header, footer, .botoes-recibo, #btnAlternarTema, #centralNotificacoesContainer {
+                display: none !important;
+            }
+            .recibo-container {
+                margin: 0 !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            .recibo-card {
+                box-shadow: none !important;
+                border: 1px solid #94a3b8 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            🍽️ <strong>SaciadosHub</strong>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="mapa.html">Mapa</a>
+            <a href="perfil.html">Meu Perfil</a>
+        </nav>
+
+        <div class="header-botoes">
+            <button onclick="window.history.back()" class="btn-login">← Voltar</button>
+            <button onclick="window.print()" class="btn-cadastro" style="background: #10b981;">🖨️ Imprimir / Baixar PDF</button>
+        </div>
+    </header>
+
+    <main class="recibo-container">
+        <div class="botoes-recibo" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div>
+                <h2 style="font-size: 20px; margin: 0;">🧾 Comprovante Digital de Entrega</h2>
+                <p style="color: #64748b; font-size: 13px;">Registro oficial de rastreabilidade de resgate alimentar.</p>
+            </div>
+            <button onclick="window.print()" class="btn-cadastro" style="background: #7c3aed;">
+                📄 Baixar Comprovante
+            </button>
+        </div>
+
+        <div class="recibo-card">
+            <div class="recibo-topo">
+                <div style="font-size: 36px; margin-bottom: 6px;">🍽️</div>
+                <span class="tag" style="background: #ede9fe; color: #7c3aed;">Ecossistema SaciadosHub</span>
+                <h1>Comprovante de Destinação Segura</h1>
+                <p style="font-size: 12px; color: #64748b; margin: 0;">Protocolo Único de Rastreabilidade</p>
+            </div>
+
+            <div class="recibo-status-box">
+                <span style="font-size: 18px; font-weight: 800; color: #065f46;">
+                    ✅ ENTREGA CONCLUÍDA & AUDITADA
+                </span>
+                <p style="font-size: 12px; color: #047857; margin: 4px 0 0;">
+                    Alimentos recebidos com sucesso e destinados à alimentação comunitária.
+                </p>
+            </div>
+
+            <div class="recibo-grid">
+                <div class="recibo-campo">
+                    <label>Empresa / Doador:</label>
+                    <strong id="reciboDoador">Restaurante Sabor & Vida</strong>
+                </div>
+
+                <div class="recibo-campo">
+                    <label>Instituição / ONG Beneficiada:</label>
+                    <strong id="reciboOng">ONG Esperança & Vida</strong>
+                </div>
+
+                <div class="recibo-campo">
+                    <label>Alimento Resgatado:</label>
+                    <strong id="reciboAlimento">Refeições Executivas e Saladas</strong>
+                </div>
+
+                <div class="recibo-campo">
+                    <label>Quantidade Resgatada:</label>
+                    <strong id="reciboQuantidade" style="color: #10b981;">25 kg (~62 refeições)</strong>
+                </div>
+
+                <div class="recibo-campo">
+                    <label>Voluntário Responsável:</label>
+                    <strong id="reciboVoluntario">Carlos Eduardo Silva</strong>
+                </div>
+
+                <div class="recibo-campo">
+                    <label>Data & Horário de Conclusão:</label>
+                    <strong id="reciboDataHora">31/08/2026 às 14:35</strong>
+                </div>
+            </div>
+
+            <div class="recibo-rodape">
+                <div>
+                    <span style="font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; display: block;">Hash Criptográfico de Validação:</span>
+                    <strong style="font-family: 'Space Mono', monospace; font-size: 12px; color: #7c3aed;">SH-REC-2026-9921-OK</strong>
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://saciadoshub.org/recibo-9921" alt="QR Code Comprovante" style="border-radius: 6px;">
+            </div>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 <strong>SaciadosHub</strong> • Rastreabilidade e Auditoria Social.</p>
+    </footer>
+
+    <script src="notificacoes-tema.js"></script>
+    <script src="saci-ai.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const doadorParam = urlParams.get("doador");
+            const ongParam = urlParams.get("ong");
+            const alimentoParam = urlParams.get("alimento");
+            const qtdParam = urlParams.get("qtd");
+
+            if (doadorParam) document.getElementById("reciboDoador").textContent = doadorParam;
+            if (ongParam) document.getElementById("reciboOng").textContent = ongParam;
+            if (alimentoParam) document.getElementById("reciboAlimento").textContent = alimentoParam;
+            if (qtdParam) document.getElementById("reciboQuantidade").textContent = `${qtdParam} kg`;
+        });
+    </script>
+
+</body>
+</html>

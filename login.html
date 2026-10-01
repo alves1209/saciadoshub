@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar na Plataforma — SaciadosHub</title>
+    <meta name="description" content="Acesse sua conta no SaciadosHub e continue conectando quem quer doar a quem mais precisa.">
+
+    <!-- Tipografia Editorial & Interface Tecnológica -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Estilo Base -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================================
+           ESTILOS EXCLUSIVOS DA PÁGINA DE LOGIN EDITORIAL
+        ========================================================= */
+        body.login-page-body {
+            background-color: #FBF9F5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(46, 125, 50, 0.07), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(217, 119, 54, 0.07), transparent 45%);
+        }
+
+        .login-top-bar {
+            padding: 18px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(251, 249, 245, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .login-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--brand-green-dark);
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .login-brand-icon {
+            font-size: 1.5rem;
+        }
+
+        .login-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: #FFFFFF;
+            border: 1px solid var(--border-card);
+            transition: all 0.2s ease;
+        }
+
+        .login-back-link:hover {
+            color: var(--brand-green-dark);
+            border-color: var(--brand-green-medium);
+            transform: translateX(-2px);
+        }
+
+        .login-security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--brand-green-medium);
+            background: rgba(46, 125, 50, 0.08);
+            border: 1px solid rgba(46, 125, 50, 0.2);
+            padding: 5px 12px;
+            border-radius: 16px;
+        }
+
+        /* CONTAINER PRINCIPAL DO LOGIN */
+        .login-main-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .login-editorial-card {
+            max-width: 980px;
+            width: 100%;
+            background: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(13, 43, 29, 0.08);
+            border: 1px solid var(--border-card);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            overflow: hidden;
+        }
+
+        /* LADO ESQUERDO: EDITORIAL & IMPACTO */
+        .login-side-editorial {
+            background: linear-gradient(150deg, var(--brand-green-dark) 0%, #16422D 100%);
+            color: #FFFFFF;
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-side-editorial::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(224, 159, 62, 0.25), transparent 70%);
+            pointer-events: none;
+        }
+
+        .side-editorial-top .editorial-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #FBD38D;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .side-editorial-top h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.2rem;
+            line-height: 1.15;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .side-editorial-top h2 em {
+            font-style: italic;
+            color: var(--food-warm-gold);
+        }
+
+        .side-editorial-top p {
+            color: #D1E0D7;
+            font-size: 0.94rem;
+            line-height: 1.55;
+        }
+
+        .side-quote-box {
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 3px solid var(--food-warm-gold);
+            padding: 16px 18px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 36px;
+        }
+
+        .side-quote-box p {
+            font-size: 0.86rem;
+            color: #E2ECE5;
+            font-style: italic;
+            line-height: 1.45;
+            margin-bottom: 8px;
+        }
+
+        .side-quote-box strong {
+            font-size: 0.76rem;
+            color: var(--food-warm-gold);
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* LADO DIREITO: FORMULÁRIO DE LOGIN & DEMOS */
+        .login-side-form {
+            padding: 48px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-form-header {
+            margin-bottom: 24px;
+        }
+
+        .login-form-header .sub-badge {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--food-terracotta);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .login-form-header h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--brand-green-dark);
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .login-form-header p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ACESSO DEMO COM 1 CLIQUE */
+        .demo-access-box {
+            background: #F7F5F0;
+            border: 1px dashed rgba(46, 125, 50, 0.3);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 24px;
+        }
+
+        .demo-access-title {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--brand-green-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .demo-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .btn-demo-quick {
+            background: #FFFFFF;
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+            padding: 8px 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--brand-green-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .btn-demo-quick:hover {
+            border-color: var(--brand-green-medium);
+            background: var(--brand-green-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.1);
+        }
+
+        .btn-demo-quick .demo-icon {
+            font-size: 1.1rem;
+        }
+
+        /* DIVISOR */
+        .login-separator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .login-separator span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .login-separator::before,
+        .login-separator::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-subtle);
+        }
+
+        /* FORMULÁRIO */
+        .login-fields-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-group-editorial {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group-editorial label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .input-with-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-with-icon-wrapper .input-icon {
+            position: absolute;
+            left: 14px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .input-with-icon-wrapper input {
+            width: 100%;
+            padding: 12px 14px 12px 42px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border-card);
+            font-size: 0.92rem;
+            font-family: inherit;
+            color: var(--text-primary);
+            background: #FFFFFF;
+            transition: all 0.2s ease;
+        }
+
+        .input-with-icon-wrapper input:focus {
+            outline: none;
+            border-color: var(--brand-green-medium);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+        }
+
+        .btn-toggle-password {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-toggle-password:hover {
+            color: var(--brand-green-primary);
+        }
+
+        .login-options-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-top: -4px;
+        }
+
+        .remember-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .forgot-pass-link {
+            color: var(--brand-green-medium);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .forgot-pass-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit-login {
+            background: var(--brand-green-primary);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 14px;
+            padding: 14px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px rgba(22, 66, 45, 0.25);
+            margin-top: 6px;
+        }
+
+        .btn-submit-login:hover {
+            background: var(--brand-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(22, 66, 45, 0.35);
+        }
+
+        .login-footer-register {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .login-footer-register a {
+            color: var(--food-terracotta);
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .login-footer-register a:hover {
+            text-decoration: underline;
+            color: #C05621;
+        }
+
+        /* FEEDBACK / ALERTA DE ERRO */
+        .login-alert-box {
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .login-alert-box.error {
+            display: flex;
+            background: #FEE2E2;
+            color: #991B1B;
+            border: 1px solid #FCA5A5;
+        }
+
+        .login-alert-box.success {
+            display: flex;
+            background: #DCFCE7;
+            color: #166534;
+            border: 1px solid #86EFAC;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 860px) {
+            .login-editorial-card {
+                grid-template-columns: 1fr;
+            }
+            .login-side-editorial {
+                padding: 36px 28px;
+            }
+            .login-side-form {
+                padding: 36px 28px;
+            }
+            .demo-buttons-grid {
+                grid-template-columns: 1fr;
+            }
+            .login-top-bar {
+                padding: 14px 20px;
+            }
+            .login-security-badge {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="login-page-body">
+
+    <!-- CABEÇALHO DA PÁGINA DE LOGIN -->
+    <header class="login-top-bar">
+        <a href="index.html" class="login-brand" title="Voltar ao início">
+            <span class="login-brand-icon">🌱</span>
+            <span>SaciadosHub</span>
+        </a>
+
+        <div class="login-security-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>Ambiente Criptografado & Seguro</span>
+        </div>
+
+        <a href="index.html" class="login-back-link">
+            <span>← Voltar ao Início</span>
+        </a>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="login-main-wrapper">
+        <div class="login-editorial-card">
+
+            <!-- LADO ESQUERDO: PAINEL EDITORIAL -->
+            <div class="login-side-editorial">
+                <div class="side-editorial-top">
+                    <span class="editorial-pill">✨ Tecnologia Social 2026</span>
+                    <h2>Comida que <em>conecta</em>.<br>Impacto que <em>transforma</em>.</h2>
+                    <p>Entre para gerenciar doações, responder a chamados urgentes e acompanhar a distribuição transparente de alimentos em tempo real.</p>
+                </div>
+
+                <div class="side-quote-box">
+                    <p>"Graças ao SaciadosHub, conseguimos canalizar nossas sobras diárias com dignidade, rapidez e impacto comprovado."</p>
+                    <strong>— Rede Solidária de Alimentação</strong>
+                </div>
+            </div>
+
+            <!-- LADO DIREITO: FORMULÁRIO DE ACESSO -->
+            <div class="login-side-form">
+                <div class="login-form-header">
+                    <span class="sub-badge">Área de Acesso</span>
+                    <h1>Bem-vindo de volta!</h1>
+                    <p>Entre com sua conta ou utilize um perfil demonstrativo abaixo.</p>
+                </div>
+
+                <!-- ALERTA DE STATUS -->
+                <div id="loginAlertBox" class="login-alert-box"></div>
+
+                <!-- ACESSO RÁPIDO PARA TESTE COM 1 CLIQUE -->
+                <div class="demo-access-box">
+                    <div class="demo-access-title">
+                        <span>⚡ Acesso Rápido de Teste (1 Clique):</span>
+                    </div>
+                    <div class="demo-buttons-grid">
+                        <button type="button" class="btn-demo-quick" onclick="window.loginDemoPerfil('restaurante')">
+                            <span class="demo-icon">🍽️</span>
+                            <span>Doador</span>
+                        </button>
+                        <button type="button" class="btn-demo-quick" onclick="window.loginDemoPerfil('ong')">
+                            <span class="demo-icon">🏢</span>
+                            <span>ONG</span>
+                        </button>
+                        <button type="button" class="btn-demo-quick" onclick="window.loginDemoPerfil('voluntario')">
+                            <span class="demo-icon">🚴</span>
+                            <span>Voluntário</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="login-separator">
+                    <span>ou digite seu e-mail e senha</span>
+                </div>
+
+                <!-- FORMULÁRIO -->
+                <form id="formLogin" class="login-fields-form">
+                    <div class="input-group-editorial">
+                        <label for="email">E-mail Cadastrado</label>
+                        <div class="input-with-icon-wrapper">
+                            <span class="input-icon">✉️</span>
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="exemplo@organizacao.com.br"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="input-group-editorial">
+                        <label for="senha">Sua Senha</label>
+                        <div class="input-with-icon-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input
+                                type="password"
+                                id="senha"
+                                placeholder="••••••••"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button type="button" class="btn-toggle-password" id="btnToggleSenha" title="Mostrar ou ocultar senha">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="login-options-row">
+                        <label class="remember-checkbox-label">
+                            <input type="checkbox" id="lembrarMe" checked>
+                            <span>Lembrar de mim</span>
+                        </label>
+                        <a href="faq.html" class="forgot-pass-link">Esqueceu a senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn-submit-login" id="btnSubmitLogin">
+                        <span>Acessar Plataforma</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </form>
+
+                <div class="login-footer-register">
+                    <span>Ainda não possui conta?</span>
+                    <a href="cadastro-rapido.html">Cadastre-se em 2 minutos ↗</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>
